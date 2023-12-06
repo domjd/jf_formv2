@@ -23,7 +23,7 @@ function showResults(val) {
          data.items[i].title + ' | ' + data.items[i].company_number + '<div class="companyAddress">' + data.items[i].address_snippet + "</div>" +
          '</li>'; 
        }
-       res.style.border = '1px #ccc'
+       res.style.border = '1px solid #ccc'
        res.innerHTML = '<ul>' + list + '</ul>';
        res.style.display = "block"
        companyArray = data.items;
