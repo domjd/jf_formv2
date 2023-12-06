@@ -51,8 +51,8 @@ function showResults(val) {
       companyNameField.value = formatTitle(selectedCompany.title);
       //companyAddressField.value = selectedCompany.address_snippet;
       companyAddressOne.value = selectedCompany.address.premises + " " + selectedCompany.address.address_line_1;
-      companyAddressTwo.value = selectedCompany.address.address_line_2 === null ? selectedCompany.address.locality : selectedCompany.address.address_line_2;
-      companyAddressThree = selectedCompany.address.region === null ? selectedCompany.address.country : selectedCompany.address.region; 
+      companyAddressTwo.value = selectedCompany.address.address_line_2 == null ? selectedCompany.address.locality : selectedCompany.address.address_line_2;
+      companyAddressThree = selectedCompany.address.region == null ? selectedCompany.address.country : selectedCompany.address.region; 
       companyPostcode.value = selectedCompany.address.postal_code;
 
     }
