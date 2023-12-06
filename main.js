@@ -45,12 +45,14 @@ function showResults(val) {
     let companyPostcode = document.getElementById("cpostcode");
     let companyAddressOne = document.getElementById("caddressOne");
     let companyAddressTwo = document.getElementById("caddressTwo");
+    let companyAddressThree = document.getElementById("caddressThree");
 
-    if(companyNameField && companyAddressOne && companyAddressTwo && companyPostcode){
+    if(companyNameField && companyAddressOne && companyAddressTwo && companyAddressThree && companyPostcode){
       companyNameField.value = formatTitle(selectedCompany.title);
       //companyAddressField.value = selectedCompany.address_snippet;
       companyAddressOne.value = selectedCompany.address.premises + " " + selectedCompany.address.address_line_1;
-      companyAddressTwo.value = selectedCompany.address.address_line_2;
+      companyAddressTwo.value = selectedCompany.address.address_line_2 === null ? selectedCompany.address.locality : selectedCompany.address.address_line_2;
+      companyAddressThree = selectedCompany.address.region === null ? selectedCompany.address.country : selectedCompany.address.region; 
       companyPostcode.value = selectedCompany.address.postal_code;
 
     }
