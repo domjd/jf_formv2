@@ -160,9 +160,10 @@ textarea{
 
 #result {
     padding: 3px;
+    margin-right: 0.4rem;
     position: absolute;
     background-color: white;
-    min-width: 200px;
+    min-width: 360px;
     width: auto;
     display: none;
     border-radius: 8px;
