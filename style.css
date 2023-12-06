@@ -163,7 +163,6 @@ textarea{
     margin-right: 0.4rem;
     position: relative;
     background-color: white;
-    min-width: 360px;
     width: 100%;
     display: none;
     border-radius: 8px;
