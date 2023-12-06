@@ -41,14 +41,14 @@ function showResults(val) {
     selectedCompany = companyArray[index];
     console.log(selectedCompany)
     let companyNameField = document.getElementById("cname");
-    let companyAddressField = document.getElementById("caddress");
+    //let companyAddressField = document.getElementById("caddress");
     let companyPostcode = document.getElementById("cpostcode");
     let companyAddressOne = document.getElementById("caddressOne");
     let companyAddressTwo = document.getElementById("caddressTwo");
 
-    if(companyNameField && companyAddressField){
+    if(companyNameField && companyAddressOne && companyAddressTwo && companyPostcode){
       companyNameField.value = formatTitle(selectedCompany.title);
-      companyAddressField.value = selectedCompany.address_snippet;
+      //companyAddressField.value = selectedCompany.address_snippet;
       companyAddressOne.value = selectedCompany.address.premises + " " + selectedCompany.address.address_line_1;
       companyAddressTwo.value = selectedCompany.address.address_line_2;
       companyPostcode.value = selectedCompany.address.postal_code;
