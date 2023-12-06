@@ -161,14 +161,15 @@ textarea{
 #result {
     padding: 3px;
     margin-right: 0.4rem;
-    position: absolute;
+    position: relative;
     background-color: white;
     min-width: 360px;
-    width: auto;
+    width: 100%;
     display: none;
     border-radius: 8px;
     transition: all 0.5s;
     z-index: 1;
+    top: -1.4rem;
   }
 
   #result ul {
