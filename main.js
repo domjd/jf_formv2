@@ -23,7 +23,7 @@ function showResults(val) {
          data.items[i].title + ' | ' + data.items[i].company_number + '<div class="companyAddress">' + data.items[i].address_snippet + "</div>" +
          '</li>'; 
        }
-       res.style.border = '1px dotted #ccc'
+       res.style.border = '1px #ccc'
        res.innerHTML = '<ul>' + list + '</ul>';
        res.style.display = "block"
        companyArray = data.items;
@@ -52,7 +52,7 @@ function showResults(val) {
       //companyAddressField.value = selectedCompany.address_snippet;
       companyAddressOne.value = selectedCompany.address.premises + " " + selectedCompany.address.address_line_1;
       companyAddressTwo.value = selectedCompany.address.address_line_2 == null ? selectedCompany.address.locality : selectedCompany.address.address_line_2;
-      companyAddressThree = selectedCompany.address.region == null ? selectedCompany.address.country : selectedCompany.address.region; 
+      companyAddressThree.value = selectedCompany.address.region == null ? selectedCompany.address.country : selectedCompany.address.region; 
       companyPostcode.value = selectedCompany.address.postal_code;
 
     }
