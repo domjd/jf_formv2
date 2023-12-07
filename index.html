@@ -14,91 +14,128 @@
         <form action="" id="leadform" autocomplete="on">
         <div class="form-section">
             <h3>Step 1: About You</h3>
-            <label for="fname">First name:</label><br>
-            <input type="text" id="fname" name="fname" autocomplete="given-name" minlength="2" pattern="^[a-zA-Z]+$" title="Must be letters only with two characters minimum" required><br>
-            <label for="lname">Last name:</label><br>
-            <input type="text" id="lname" name="lname" autocomplete="family-name"  minlength="2" pattern="^[a-zA-Z]+$" title="Must be letters only with two characters minimum" required><br>
-            <label for="email">Email:</label><br>
-            <input type="email" id="email" name="email" required><br>
-            <label for="mobilenumber">Mobile Number:</label>
-            <input type="tel" id="mobilenumber" name="mobilenumber" pattern="^\d{11}$" title="Mobile number must be 11 numbers" required>
+            <div class = "form-field">
+                <label for="fname">First name:</label>
+                <input type="text" id="fname" name="fname" autocomplete="given-name" minlength="2" pattern="^[a-zA-Z]+$" title="Must be letters only with two characters minimum" required><br>
+            </div>
+            <div class = "form-field">
+                <label for="lname">Last name:</label><br>
+                <input type="text" id="lname" name="lname" autocomplete="family-name"  minlength="2" pattern="^[a-zA-Z]+$" title="Must be letters only with two characters minimum" required><br>
+            </div>
+            <div class = "form-field">
+                <label for="email">Email:</label><br>
+                <input type="email" id="email" name="email" required><br>
+            </div>
+            <div class = "form-field">
+                <label for="mobilenumber">Mobile Number:</label>
+                <input type="tel" id="mobilenumber" name="mobilenumber" pattern="^\d{11}$" title="Mobile number must be 11 numbers" required>
+            </div>
         </div>
+
         <div class="form-section">
-            <h3>Step 2: Your Business </h3>
-            <label for="q">Limited Company Lookup:</label><br>
+            <h3>Step 2: Your Loan</h3>
+            <div class = "form-field">
+                <label for="amountrequired">Amount Required:</label>
+                <select id="amountrequired" name="amountrequired" required>
+                    <option value="" disabled selected hidden>Loan Amount</option>
+                    <option value="£5,000">£5,000</option>
+                    <option value="£10,000">£10,000</option>
+                    <option value="£20,000">£20,000</option>
+                    <option value="£30,000">£30,000</option>
+                    <option value="£40,000">£40,000</option>
+                    <option value="£50,000">£50,000</option>
+                    <option value="£75,000">£75,000</option>
+                    <option value="£100,000">£100,000</option>
+                    <option value="£125,000">£125,000</option>
+                    <option value="£150,000">£150,000</option>
+                    <option value="£200,000+">£200,000+</option>
+                </select>
+            </div>
+            <div class = "form-field">
+                <label for="loanterm">Loan Term:</label>
+                <select id="loanterm" name="loanterm" required>
+                    <option value="" disabled selected hidden>Loan Term</option>
+                    <option value="1 Year">1 Year</option>
+                    <option value="2 Years">2 Years</option>
+                    <option value="3 Years">3 Years</option>
+                    <option value="4 Years">4 Years</option>
+                    <option value="5 Years">5 Years</option>
+                    <option value="6 Years">6 Years</option>
+                    <option value="7 Years">7 Years</option>
+                    <option value="8 Years">8 Years</option>
+                    <option value="9 Years">9 Years</option>
+                    <option value="10 Years">10 Years</option>
+                    <option value="11 Years">11 Years</option>
+                    <option value="12 Years">12 Years</option>
+                    <option value="13 Years">13 Years</option>
+                    <option value="14 Years">14 Years</option>
+                    <option value="15 Years">15 Years</option>
+                </select>
+            </div>
+            <div class = "form-field">
+                <label for="purposeofLoan">Purpose of Loan:</label>
+                <select id="purposeofloan" name="purposeofloan" required>
+                    <option value="" disabled selected hidden>Purpose of Loan</option>
+                    <option value="Repay Business Loan">Repay Business Loan</option>
+                    <option value="Repay Business Debt">Repay Business Debt</option>
+                    <option value="Repay HMRC">Repay HMRC</option>
+                    <option value="Fund Working Capital">Fund Working Capital</option>
+                    <option value="Purchase Equipment">Purchase Equipment</option>
+                    <option value="Purchase Lease">Purchase Lease</option>
+                    <option value="Fund Cashflow">Fund Cashflow</option>
+                    <option value="Purchase Premises">Purchase Premises</option>
+                    <option value="Other">Other</option>
+                </select>
+            </div>
+
+            <div class = "form-field">
+                <label id="describeloanpurposelabel" for="describeloanpurpose">Describe Purpose of Loan</label><br>
+                <textarea id="describeloanpurpose" name="describeloanpurpose" rows="4" required></textarea>
+            </div>
+        </div>
+
+        <div class="form-section">
+            <h3>Step 3: Your Property Security </h3>
+            <div class = "form-field">
+                <label for="propertyvalue">Property Value (£)</label>
+                <input type="text" min="100000" inputmode="numeric" id="propertyvalue" class="number-separator" name ="propertyvalue" placeholder="Enter Property Value" >
+                <p>Property value must be over £100,000</p>
+            </div>
+
+            <div class = "form-field">
+                <label for="firstmortgage">Amount of First Mortgage Owed on Security Property (£)</label>
+                <input type="text" inputmode="numeric" id="firstmortgage" name ="firstmortgage" class="number-separator" placeholder="Enter First Mortgage" >
+            </div>
+            <div class = "form-field">
+                <label for="secondmortgage">Amount of Second Mortgage Owed on Security Property (£)</label>
+                <input type="text" inputmode="numeric" id="othercharges" name ="othercharges" class="number-separator" placeholder="Enter Second Mortgage" >
+            </div>
+            <div class = "form-field">
+                <label for="otherchrages">Amount of Any Other Charges or Guarantees on Security Property (£)</label>
+                <input type="text" inputmode="numeric" id="othercharges" name ="othercharges" class="number-separator" placeholder="Enter Any Other Charges" >
+            </div>       
+        </div>
+
+       
+
+        <div class="form-section">
+            <h3>Step 4: Your Business</h3>
+            <p class = "form-section-info">Search for your company in the field below and select from the dropdown box that appears</p>
+            <label for="q">Company Lookup:</label><br>
             <input type="text" name="q" id="q" onKeyUp="showResults(this.value)" placeholder="Search for company here to fill in fields below"/><br>
             <div id="result"></div>
-            <label for="fname">Limited Company Name:</label><br>
-            <input type="text" id="cname" name="cname" readonly required><br>
-            <label for="fname">Company Address:</label><br>
-            <input type="text" id="caddressOne" class="caddress" name="cname" readonly required><br>
-            <input type="text" id="caddressTwo" class="caddress" name="cname" readonly required><br>
-            <input type="text" id="caddressThree" class="caddress" name="cname" readonly required><br>
-            <label for="postcode">Company Postcode:</label><br>
-            <input type="text" id="cpostcode" name="cname" readonly required><br>
+            <div id = "companyDetails">
+                <label for="cname">Company Name:</label><br>
+                <input type="text" id="cname" name="cname" readonly required><br>
+                <label for="caddressOne">Business Address:</label><br>
+                <input type="text" id="caddressOne" class="caddress" name="cname" readonly required><br>
+                <input type="text" id="caddressTwo" class="caddress" name="cname" readonly required><br>
+                <input type="text" id="caddressThree" class="caddress" name="cname" readonly required><br>
+                <label for="postcode">Company Postcode:</label><br>
+                <input type="text" id="cpostcode" name="cname" readonly required>
+            </div>
+            <br>
 
-        </div>
-        <div class="form-section">
-            <h3>Step 3: Your Loan</h3>
-            <label for="amountrequired">Amount Required:</label><br>
-            <select id="amountrequired" name="amountrequired" required>
-                <option value="" disabled selected hidden>Loan Amount</option>
-                <option value="£5,000">£5,000</option>
-                <option value="£10,000">£10,000</option>
-                <option value="£20,000">£20,000</option>
-                <option value="£30,000">£30,000</option>
-                <option value="£40,000">£40,000</option>
-                <option value="£50,000">£50,000</option>
-                <option value="£75,000">£75,000</option>
-                <option value="£100,000">£100,000</option>
-                <option value="£125,000">£125,000</option>
-                <option value="£150,000">£150,000</option>
-                <option value="£200,000+">£200,000+</option>
-            </select><br>
-            <label for="loanterm">Loan Term:</label><br>
-            <select id="loanterm" name="loanterm" required>
-                <option value="" disabled selected hidden>Loan Term</option>
-                <option value="1 Year">1 Year</option>
-                <option value="2 Years">2 Years</option>
-                <option value="3 Years">3 Years</option>
-                <option value="4 Years">4 Years</option>
-                <option value="5 Years">5 Years</option>
-                <option value="6 Years">6 Years</option>
-                <option value="7 Years">7 Years</option>
-                <option value="8 Years">8 Years</option>
-                <option value="9 Years">9 Years</option>
-                <option value="10 Years">10 Years</option>
-                <option value="11 Years">11 Years</option>
-                <option value="12 Years">12 Years</option>
-                <option value="13 Years">13 Years</option>
-                <option value="14 Years">14 Years</option>
-                <option value="15 Years">15 Years</option>
-            </select><br>
-            <label for="purposeofLoan">Purpose of Loan:</label><br>
-            <select id="purposeofloan" name="purposeofloan" required>
-                <option value="Repay Business Loan">Repay Business Loan</option>
-                <option value="Repay Business Debt">Repay Business Debt</option>
-                <option value="Repay HMRC">Repay HMRC</option>
-                <option value="Fund Working Capital">Fund Working Capital</option>
-                <option value="Purchase Equipment">Purchase Equipment</option>
-                <option value="Purchase Lease">Purchase Lease</option>
-                <option value="Fund Cashflow">Fund Cashflow</option>
-                <option value="Purchase Premises">Purchase Premises</option>
-                <option value="Other">Other</option>
-            </select><br>
-            <label id="describeloanpurposelabel" for="describeloanpurpose">Describe Purpose of Loan</label><br>
-            <textarea id="describeloanpurpose" name="describeloanpurpose" rows="4" readonly required></textarea>
-        </div>
-        <div class="form-section">
-            <h3>Step 4: Your Security Property</h3>
-            <label for="propertyvalue">Property Value (£)</label>
-            <input type="text" min="100000" inputmode="numeric" id="propertyvalue" class="number-separator" name ="propertyvalue" placeholder="Enter Property Value" >
-            <label for="firstmortgage">Amount of First Mortgage Owed on Security Property (£)</label>
-            <input type="text" inputmode="numeric" id="firstmortgage" name ="firstmortgage" class="number-separator" placeholder="Enter First Mortgage" >
-            <label for="secondmortgage">Amount of Second Mortgage Owed on Security Property (£)</label>
-            <input type="text" inputmode="numeric" id="othercharges" name ="othercharges" class="number-separator" placeholder="Enter Second Mortgage" >
-            <label for="otherchrages">Amount of Any Other Charges or Guarantees on Security Property (£)</label>
-            <input type="text" inputmode="numeric" id="othercharges" name ="othercharges" class="number-separator" placeholder="Enter Any Other Charges" >
             <div class="grid-container">
                 <input type="checkbox" id="bankaccount" name="bankaccount" value="bankaccount" required>
                 <label for="bankaccount"> I confirm I have a business bank account</label><br>

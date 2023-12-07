@@ -47,6 +47,9 @@ function showResults(val) {
     let companyAddressTwo = document.getElementById("caddressTwo");
     let companyAddressThree = document.getElementById("caddressThree");
 
+    let companyDetails = document.getElementById("companyDetails");
+    companyDetails.style.display = "block";
+
     if(companyNameField && companyAddressOne && companyAddressTwo && companyAddressThree && companyPostcode){
       companyNameField.value = formatTitle(selectedCompany.title);
       //companyAddressField.value = selectedCompany.address_snippet;
