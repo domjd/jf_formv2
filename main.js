@@ -1,6 +1,11 @@
 let companyArray = [];
 let selectedCompany = [];
 
+function resizeIframe() {
+  var bodyHeight = document.body.scrollHeight;
+  window.parent.postMessage({ height: bodyHeight }, '*');
+}
+
 function showResults(val) {
     let res = document.getElementById("result");
 
@@ -64,7 +69,8 @@ function showResults(val) {
     document.getElementById("q").value = ""; 
     let res = document.getElementById("result");
     res.innerHTML = '';
-    res.style.display = "none"
+    res.style.display = "none";
+    resizeIframe();
   }
 
   function formatTitle(sentence) {
@@ -94,16 +100,11 @@ window.onload = function() {
     console.log(loanPurpose.value);
     if(loanPurpose.value === "Other"){
       descLoan.style.display = "block";
+      resizeIframe();
     } else{
       descLoan.style.display = "none";
     }
   });
-
-
-  function resizeIframe() {
-      var bodyHeight = document.body.scrollHeight;
-      window.parent.postMessage({ height: bodyHeight }, '*');
-  }
 
   easyNumberSeparator({
     selector: '.number-separator',
