@@ -94,6 +94,7 @@ window.onload = function() {
   let descLoan = document.getElementById("describeLoan");
 
   descLoan.style.display = "none";
+  resizeIframe();
 
   let loanPurpose = document.getElementsByName("purposeofloan")[0];
 
