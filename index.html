@@ -15,19 +15,19 @@
         <div class="form-section">
             <h3>Step 1: About You</h3>
             <div class = "form-field">
-                <label for="fname">First name:</label>
+                <label for="fname">First Name <span class="required">*</span></label>
                 <input type="text" id="fname" name="fname" placeholder="First Name" autocomplete="given-name" minlength="2" pattern="^[a-zA-Z]+$" title="Must be letters only with two characters minimum" required><br>
             </div>
             <div class = "form-field">
-                <label for="lname">Last name:</label><br>
+                <label for="lname">Last Name <span class="required">*</span></label><br>
                 <input type="text" id="lname" name="lname" placeholder="Last Name" autocomplete="family-name"  minlength="2" pattern="^[a-zA-Z]+$" title="Must be letters only with two characters minimum" required><br>
             </div>
             <div class = "form-field">
-                <label for="email">Email:</label><br>
+                <label for="email">Email <span class="required">*</span></label><br>
                 <input type="email" placeholder="Email Address" id="email" name="email" required><br>
             </div>
             <div class = "form-field">
-                <label for="mobilenumber">Mobile Number:</label>
+                <label for="mobilenumber">Mobile Number <span class="required">*</span></label>
                 <input type="tel" id="mobilenumber" placeholder="Mobile Number" name="mobilenumber" pattern="^\d{11}$" title="Mobile number must be 11 numbers" required>
                 <p class="sublabel">Must be 11 numbers</p>
             </div>
@@ -36,7 +36,7 @@
         <div class="form-section">
             <h3>Step 2: Your Loan</h3>
             <div class = "form-field">
-                <label for="amountrequired">Amount Required:</label>
+                <label for="amountrequired">Amount Required <span class="required">*</span></label>
                 <select id="amountrequired" name="amountrequired" required>
                     <option value="" disabled selected hidden>Loan Amount</option>
                     <option value="£5,000">£5,000</option>
@@ -53,7 +53,7 @@
                 </select>
             </div>
             <div class = "form-field">
-                <label for="loanterm">Loan Term:</label>
+                <label for="loanterm">Loan Term <span class="required">*</span></label>
                 <select id="loanterm" name="loanterm" required>
                     <option value="" disabled selected hidden>Loan Term</option>
                     <option value="1 Year">1 Year</option>
@@ -74,7 +74,7 @@
                 </select>
             </div>
             <div class = "form-field">
-                <label for="purposeofLoan">Purpose of Loan:</label>
+                <label for="purposeofLoan">Purpose of Loan <span class="required">*</span></label>
                 <select id="purposeofloan" name="purposeofloan" required>
                     <option value="" disabled selected hidden>Purpose of Loan</option>
                     <option value="Repay Business Loan">Repay Business Loan</option>
@@ -89,31 +89,34 @@
                 </select>
             </div>
 
-            <div class = "form-field">
+            <div class = "form-field" id = "describeLoan">
                 <label id="describeloanpurposelabel" for="describeloanpurpose">Describe Purpose of Loan</label><br>
-                <textarea id="describeloanpurpose" name="describeloanpurpose" rows="4" required></textarea>
+                <textarea id="describeloanpurpose" name="describeloanpurpose" rows="4"></textarea>
             </div>
         </div>
 
         <div class="form-section">
-            <h3>Step 3: Your Property Security </h3>
+            <h3>Step 3: Your Property Security</h3>
             <div class = "form-field">
-                <label for="propertyvalue">Property Value (£)</label>
+                <label for="propertyvalue">Property Value (£) <span class="required">*</span></label>
                 <input type="text" min="100000" inputmode="numeric" id="propertyvalue" class="number-separator" name ="propertyvalue" placeholder="Enter Property Value" >
-                <p>Property value must be over £100,000</p>
+                <p class = "sublabel">Property value must be over £100,000</p>
             </div>
 
             <div class = "form-field">
-                <label for="firstmortgage">Amount of First Mortgage Owed on Security Property (£)</label>
-                <input type="text" inputmode="numeric" id="firstmortgage" name ="firstmortgage" class="number-separator" placeholder="Enter First Mortgage" >
+                <label for="firstmortgage">Amount of First Mortgage Owed on Security Property (£) <span class="required">*</span></label>
+                <input type="text" inputmode="numeric" id="firstmortgage" name ="firstmortgage" class="number-separator" placeholder="Enter First Mortgage">
+                <p class="sublabel">If none applies enter 0</p>
             </div>
             <div class = "form-field">
-                <label for="secondmortgage">Amount of Second Mortgage Owed on Security Property (£)</label>
+                <label for="secondmortgage">Amount of Second Mortgage Owed on Security Property (£) <span class="required">*</span></label>
                 <input type="text" inputmode="numeric" id="othercharges" name ="othercharges" class="number-separator" placeholder="Enter Second Mortgage" >
+                <p class="sublabel">If none applies enter 0</p>
             </div>
             <div class = "form-field">
-                <label for="otherchrages">Amount of Any Other Charges or Guarantees on Security Property (£)</label>
+                <label for="othercharges">Amount of Any Other Charges or Guarantees on Security Property (£) <span class="required">*</span></label>
                 <input type="text" inputmode="numeric" id="othercharges" name ="othercharges" class="number-separator" placeholder="Enter Any Other Charges" >
+                <p class="sublabel">If none applies enter 0</p>
             </div>       
         </div>
 
@@ -123,23 +126,23 @@
             <h3>Step 4: Your Business</h3>
             <p class = "form-section-info">Search for your company in the field below and select from the dropdown box that appears</p>
             <div class = "form-field">
-                <label for="q">Company Lookup:</label><br>
+                <label for="q">Company Lookup <span class="required">*</span></label><br>
                 <input type="text" name="q" id="q" onKeyUp="showResults(this.value)" placeholder="Search for company here to find company details"/><br>
                 <div id="result"></div>
             </div>
             <div id = "companyDetails">
                 <div class = "form-field">
-                    <label for="cname">Company Name:</label>
+                    <label for="cname">Company Name</label>
                     <input type="text" id="cname" name="cname" readonly required>
                 </div>
                 <div class = "form-field">
-                    <label for="caddressOne">Business Address:</label><br>
+                    <label for="caddressOne">Business Address</label><br>
                     <input type="text" id="caddressOne" class="caddress" name="cname" readonly required><br>
                     <input type="text" id="caddressTwo" class="caddress" name="cname" readonly required><br>
                     <input type="text" id="caddressThree" class="caddress" name="cname" readonly required><br>
                 </div>
                 <div class = "form-field">
-                    <label for="postcode">Company Postcode:</label><br>
+                    <label for="postcode">Company Postcode</label><br>
                     <input type="text" id="cpostcode" name="cname" readonly required>
                 </div>
             </div>
@@ -147,9 +150,9 @@
 
             <div class="grid-container">
                 <input type="checkbox" id="bankaccount" name="bankaccount" value="bankaccount" required>
-                <label for="bankaccount"> I confirm I have a business bank account</label><br>
+                <label for="bankaccount"> I confirm I have a business bank account <span class="required">*</span></label><br>
                 <input type="checkbox" id="property" name="property" value="property" required>
-                <label for="property"> I confirm I have property that could be used as loan security</label>
+                <label for="property"> I confirm I have property that could be used as loan security <span class="required">*</span></label>
             </div>
             <br><br>
             <button type="submit">Submit</button>

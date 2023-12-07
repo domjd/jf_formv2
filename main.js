@@ -84,22 +84,18 @@ window.onload = function() {
   let leadForm = document.getElementById("leadform");
   let loader = document.getElementById("loader");
 
-  let descLoanLabel = document.getElementById("describeloanpurposelabel");
-  let descLoanInput = document.getElementById("describeloanpurpose");
+  let descLoan = document.getElementById("describeLoan");
 
-  descLoanInput.style.display = "none";
-  descLoanLabel.style.display = "none";
+  descLoan.style.display = "none";
 
   let loanPurpose = document.getElementsByName("purposeofloan")[0];
 
   loanPurpose.addEventListener("change",(e) => {
     console.log(loanPurpose.value);
     if(loanPurpose.value === "Other"){
-      descLoanInput.style.display = "inline-block";
-      descLoanLabel.style.display = "inline-block";
+      descLoan.style.display = "block";
     } else{
-      descLoanInput.style.display = "none";
-      descLoanLabel.style.display = "none";
+      descLoan.style.display = "none";
     }
   })
 
@@ -120,7 +116,7 @@ leadForm.addEventListener("submit", (e) => {
   // If the result is false, prevent the default submission and show an alert
   if (!valid) {
     e.preventDefault();
-    alert("Please enter a propertyvalue of at least £100,000");
+    alert("Please enter a property value of at least £100,000");
   }
 
 })
