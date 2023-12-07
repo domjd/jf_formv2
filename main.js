@@ -97,9 +97,13 @@ window.onload = function() {
     } else{
       descLoan.style.display = "none";
     }
-  })
+  });
 
 
+  function resizeIframe() {
+      var bodyHeight = document.body.scrollHeight;
+      window.parent.postMessage({ height: bodyHeight }, '*');
+  }
 
   easyNumberSeparator({
     selector: '.number-separator',
