@@ -17,7 +17,7 @@ body{
 }
 
 #container {
-  background-color: #f6f9fc !important;
+  background-color: transparent !important;
   display: flex;
   justify-content: center;
   align-items: center;
