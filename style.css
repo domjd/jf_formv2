@@ -14,10 +14,10 @@ body{
   justify-content: center;
   align-items: flex-start;
   height: 100vh;
-  background-color: transparent;
 }
 
 #container {
+  background-color: #f6f9fc;
   display: flex;
   justify-content: center;
   align-items: center;
