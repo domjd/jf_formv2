@@ -121,18 +121,26 @@
         <div class="form-section">
             <h3>Step 4: Your Business</h3>
             <p class = "form-section-info">Search for your company in the field below and select from the dropdown box that appears</p>
-            <label for="q">Company Lookup:</label><br>
-            <input type="text" name="q" id="q" onKeyUp="showResults(this.value)" placeholder="Search for company here to fill in fields below"/><br>
+            <div class = "form-field">
+                <label for="q">Company Lookup:</label><br>
+                <input type="text" name="q" id="q" onKeyUp="showResults(this.value)" placeholder="Search for company here to fill in fields below"/><br>
+            </div>
             <div id="result"></div>
             <div id = "companyDetails">
-                <label for="cname">Company Name:</label><br>
-                <input type="text" id="cname" name="cname" readonly required><br>
-                <label for="caddressOne">Business Address:</label><br>
-                <input type="text" id="caddressOne" class="caddress" name="cname" readonly required><br>
-                <input type="text" id="caddressTwo" class="caddress" name="cname" readonly required><br>
-                <input type="text" id="caddressThree" class="caddress" name="cname" readonly required><br>
-                <label for="postcode">Company Postcode:</label><br>
-                <input type="text" id="cpostcode" name="cname" readonly required>
+                <div class = "form-field">
+                    <label for="cname">Company Name:</label>
+                    <input type="text" id="cname" name="cname" readonly required>
+                </div>
+                <div class = "form-field">
+                    <label for="caddressOne">Business Address:</label><br>
+                    <input type="text" id="caddressOne" class="caddress" name="cname" readonly required><br>
+                    <input type="text" id="caddressTwo" class="caddress" name="cname" readonly required><br>
+                    <input type="text" id="caddressThree" class="caddress" name="cname" readonly required><br>
+                </div>
+                <div class = "form-field">
+                    <label for="postcode">Company Postcode:</label><br>
+                    <input type="text" id="cpostcode" name="cname" readonly required>
+                </div>
             </div>
             <br>
 
