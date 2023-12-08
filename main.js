@@ -165,7 +165,7 @@ leadForm.addEventListener("submit", (e) => {
 
   
     // handle submit
-    fetch(`https://sea-lion-app-lccwh.ondigitalocean.app/jotform/submitform`,
+    fetch(`https://sea-lion-app-lccwh.ondigitalocean.app/jotform/submitmainform`,
     {headers: {"Content-Type":"application/json"},method: "POST",body: JSON.stringify(formData)})
     .then(response => response.json())
     .then(data => {
