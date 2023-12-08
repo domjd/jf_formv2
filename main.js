@@ -129,7 +129,7 @@ leadForm.addEventListener("submit", (e) => {
   }
 
 })
-/* 
+ 
   leadForm.addEventListener("submit", (e) => {
     e.preventDefault();
     leadForm.style.display = "none";
@@ -139,13 +139,27 @@ leadForm.addEventListener("submit", (e) => {
       "lastName": document.getElementById("lname").value,
       "email": document.getElementById("email").value,
       "mobilenumber":document.getElementById("mobilenumber").value,
-      "title": selectedCompany.title,
+      "amountRequired": document.getElementById("amountrequired").value,
+      "termrequired": document.getElementById("loanterm").value,
+      "purposeofloan": document.getElementById("purposeofloan").value,
+      "descloan": document.getElementById("describeloanpurpose").value,
+      "propertytype": document.getElementById("typeofproperty").value,
+      "propertyvalue": document.getElementById("propertyvalue").value,
+      "firstmortgage": document.getElementById("firstmortgage").value,
+      "secondmortgage": document.getElementById("secondmortgage").value,
+      "othercharges": document.getElementById("othercharges").value,
+      "totaldebt": document.getElementById("othercharges").value,
+      "companyname": selectedCompany.title,
       "companyNumber": selectedCompany.company_number,
       "companyStatus": selectedCompany.company_status,
       "companyDescription": selectedCompany.description,
       "companyurl": "https://find-and-update.company-information.service.gov.uk" + selectedCompany.links.self,
-      "addressSnippet": selectedCompany.address_snippet,
-      "amountRequired": document.getElementById("amountrequired").value,
+      "addressOne": document.getElementById("caddressOne").value,
+      "addressTwo": document.getElementById("caddressTwo").value,
+      "addressThree": document.getElementById("caddressThree").value,
+      "companypostcode": document.getElementById("cpostcode").value,
+      "relationshiptocompany": document.getElementById("relationshiptocompany").value,
+      "companypostcode": document.getElementById("describeloanpurpose").value,
       "confirmations": [document.getElementById('bankaccount').checked,document.getElementById('property').checked]
     }
 
@@ -162,7 +176,7 @@ leadForm.addEventListener("submit", (e) => {
       }
     })
  
-  }); */
+  }); 
   
 
 }
