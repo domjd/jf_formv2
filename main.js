@@ -61,8 +61,8 @@ function showResults(val) {
       //companyAddressField.value = selectedCompany.address_snippet;
       companyAddressOne.value = selectedCompany.address.premises + " " + selectedCompany.address.address_line_1;
       companyAddressTwo.value = selectedCompany.address.address_line_2 == null ? selectedCompany.address.locality : selectedCompany.address.address_line_2;
-      companyAddressThree.value = selectedCompany.address.region == null ? selectedCompany.address.country : 
-        (selectedCompany.address.region == null ? "" : selectedCompany.address.region); 
+      companyAddressThree.value = selectedCompany.address.region == null ? (selectedCompany.address.country == null ? "" : selectedCompany.address.country) 
+        : selectedCompany.address.region; 
       companyPostcode.value = selectedCompany.address.postal_code;
 
     }
