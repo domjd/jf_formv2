@@ -160,7 +160,7 @@ leadForm.addEventListener("submit", (e) => {
       "addressthree": document.getElementById("caddressThree").value,
       "companypostcode": document.getElementById("cpostcode").value,
       "relationshiptocompany": document.getElementById("relationshiptocompany").value,
-      "companypostcode": document.getElementById("describeloanpurpose").value,
+      "companypostcode": document.getElementById("cpostcode").value,
       "confirmations": [document.getElementById('bankaccount').checked,document.getElementById('property').checked]
     }
 
