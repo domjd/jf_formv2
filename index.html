@@ -32,13 +32,21 @@
                 <p class="sublabel">Must be 11 numbers</p>
             </div>
             <div class = "form-field">
-                <label for="relationshiptocompany">Relationship To Company <span class="required">*</span></label>
+                <label for="relationshiptocompany">Relationship To Company<span class="required">*</span></label>
                 <select id="relationshiptocompany" name="relationshiptocompany" required>
                     <option value="" disabled selected hidden>Relationship To Company</option>
                     <option value="Director">Director</option>
                     <option value="Shareholder">Shareholder</option>
                     <option value="Stakeholder">Stakeholder</option>
                     <option value="Other">Other</option>
+                </select>
+            </div>
+            <div class = "form-field">
+                <label for="companytype">Company Type<span class="required">*</span></label>
+                <select id="companytype" name="companytype" required>
+                    <option value="" disabled selected hidden>Company Type</option>
+                    <option value="Limited Company">Limited Company</option>
+                    <option value="LLP">LLP</option>
                 </select>
             </div>
         </div>

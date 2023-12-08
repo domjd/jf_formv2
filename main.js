@@ -152,6 +152,7 @@ leadForm.addEventListener("submit", (e) => {
       "companyname": selectedCompany.title,
       "companyNumber": selectedCompany.company_number,
       "companyStatus": selectedCompany.company_status,
+      "companyType": document.getElementById("companytype").value,
       "companyDescription": selectedCompany.description,
       "companyurl": "https://find-and-update.company-information.service.gov.uk" + selectedCompany.links.self,
       "addressone": document.getElementById("caddressOne").value,
