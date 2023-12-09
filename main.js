@@ -86,7 +86,7 @@ function showResults(val) {
 }
 
 let calculateTotalDebt = () => {
-  let firstMortgage = Number(document.getElementByNameId("firstmortgage").value.replace(/\,/g,''));
+  let firstMortgage = Number(document.getElementById("firstmortgage").value.replace(/\,/g,''));
   let secondMortgage = Number(document.getElementById("secondmortgage").value.replace(/\,/g,''));
   let otherCharges = Number(document.getElementById("othercharges").value.replace(/\,/g,''));
 
