@@ -104,6 +104,11 @@ window.onload = function() {
   descLoan.style.display = "none";
   resizeIframe();
 
+
+
+  document.getElementById("totaldebt").value = 45846;
+
+
   let loanPurpose = document.getElementsByName("purposeofloan")[0];
 
   loanPurpose.addEventListener("change",(e) => {
@@ -156,7 +161,7 @@ leadForm.addEventListener("submit", (e) => {
       "firstmortgage": document.getElementById("firstmortgage").value,
       "secondmortgage": document.getElementById("secondmortgage").value,
       "othercharges": document.getElementById("othercharges").value,
-      "totaldebt": calculateTotalDebt,
+      "totaldebt": calculateTotalDebt(),
       "companyname": selectedCompany.title,
       "companyNumber": selectedCompany.company_number,
       "companyStatus": selectedCompany.company_status,
