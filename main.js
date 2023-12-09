@@ -122,69 +122,73 @@ window.onload = function() {
     selector: '.number-separator',
     separator: ','
 })
-leadForm.addEventListener("submit", (e) => {
-  // Select the email input element by its name
-  var propertyValue = document.getElementsByName("propertyvalue")[0].value;
-  // Call the validateEmail function and store the result
-  propertyValue= propertyValue.replace(/\,/g,'')
-  propertyValue=Number(propertyValue);
-  console.log(propertyValue);
-  var valid = propertyValue > 100000;
-  // If the result is false, prevent the default submission and show an alert
-  if (!valid) {
-    e.preventDefault();
-    alert("Please enter a property value of at least £100,000");
-  }
-
-})
  
   leadForm.addEventListener("submit", (e) => {
     e.preventDefault();
-    leadForm.style.display = "none";
-    loader.style.display = "inline-block"
-    const formData = {
-      "title": document.getElementById("title").value,
-      "firstName": document.getElementById("fname").value,
-      "lastName": document.getElementById("lname").value,
-      "email": document.getElementById("email").value,
-      "mobilenumber":document.getElementById("mobilenumber").value,
-      "amountRequired": document.getElementById("amountrequired").value,
-      "termrequired": document.getElementById("loanterm").value,
-      "purposeofloan": document.getElementById("purposeofloan").value,
-      "descloan": document.getElementById("describeloanpurpose").value,
-      "propertytype": document.getElementById("typeofproperty").value,
-      "propertyvalue": Number(document.getElementById("propertyvalue").value.replace(/\,/g,'')),
-      "firstmortgage": Number(document.getElementById("firstmortgage").value.replace(/\,/g,'')),
-      "secondmortgage": Number(document.getElementById("secondmortgage").value.replace(/\,/g,'')),
-      "othercharges": Number(document.getElementById("othercharges").value.replace(/\,/g,'')),
-      "totaldebt": calculateTotalDebt(),
-      "companyname": selectedCompany.title,
-      "companyNumber": selectedCompany.company_number,
-      "companyStatus": selectedCompany.company_status,
-      "companyType": document.getElementById("companytype").value,
-      "companyDescription": selectedCompany.description,
-      "companyurl": "https://find-and-update.company-information.service.gov.uk" + selectedCompany.links.self,
-      "addressone": document.getElementById("caddressOne").value,
-      "addresstwo": document.getElementById("caddressTwo").value,
-      "addressthree": document.getElementById("caddressThree").value,
-      "companypostcode": document.getElementById("cpostcode").value,
-      "relationshiptocompany": document.getElementById("relationshiptocompany").value,
-      "companypostcode": document.getElementById("cpostcode").value,
-      "confirmations": [document.getElementById('bankaccount').checked,document.getElementById('property').checked]
+    
+    // Select the email input element by its name
+    var propertyValue = document.getElementsByName("propertyvalue")[0].value;
+    // Call the validateEmail function and store the result
+    propertyValue= propertyValue.replace(/\,/g,'')
+    propertyValue=Number(propertyValue);
+    console.log(propertyValue);
+    var valid = propertyValue > 100000;
+    // If the result is false, prevent the default submission and show an alert
+    if (!valid) {
+      e.preventDefault();
+      document.getElementById("propertyvalue").style.border = "1px solid red";
+      document.getElementById("propertyvaluesublabel").style.color = "red";
+      document.getElementById("propertyvaluelabel").scrollIntoView();
+    } else {
+      leadForm.style.display = "none";
+      loader.style.display = "inline-block"
+       const formData = {
+        "title": document.getElementById("title").value,
+        "firstName": document.getElementById("fname").value,
+        "lastName": document.getElementById("lname").value,
+        "email": document.getElementById("email").value,
+        "mobilenumber":document.getElementById("mobilenumber").value,
+        "amountRequired": document.getElementById("amountrequired").value,
+        "termrequired": document.getElementById("loanterm").value,
+        "purposeofloan": document.getElementById("purposeofloan").value,
+        "descloan": document.getElementById("describeloanpurpose").value,
+        "propertytype": document.getElementById("typeofproperty").value,
+        "propertyvalue": Number(document.getElementById("propertyvalue").value.replace(/\,/g,'')),
+        "firstmortgage": Number(document.getElementById("firstmortgage").value.replace(/\,/g,'')),
+        "secondmortgage": Number(document.getElementById("secondmortgage").value.replace(/\,/g,'')),
+        "othercharges": Number(document.getElementById("othercharges").value.replace(/\,/g,'')),
+        "totaldebt": calculateTotalDebt(),
+        "companyname": selectedCompany.title,
+        "companyNumber": selectedCompany.company_number,
+        "companyStatus": selectedCompany.company_status,
+        "companyType": document.getElementById("companytype").value,
+        "companyDescription": selectedCompany.description,
+        "companyurl": "https://find-and-update.company-information.service.gov.uk" + selectedCompany.links.self,
+        "addressone": document.getElementById("caddressOne").value,
+        "addresstwo": document.getElementById("caddressTwo").value,
+        "addressthree": document.getElementById("caddressThree").value,
+        "companypostcode": document.getElementById("cpostcode").value,
+        "relationshiptocompany": document.getElementById("relationshiptocompany").value,
+        "companypostcode": document.getElementById("cpostcode").value,
+        "confirmations": [document.getElementById('bankaccount').checked,document.getElementById('property').checked]
+      } 
+   
+    
+      // handle submit
+       fetch(`https://sea-lion-app-lccwh.ondigitalocean.app/jotform/submitmainform`,
+      {headers: {"Content-Type":"application/json"},method: "POST",body: JSON.stringify(formData)})
+      .then(response => response.json())
+      .then(data => {
+        if(data.success){
+          window.top.location.href = 'https://equiddy.com/thank-you/';
+        } else {
+          alert("Error, form not submitted")
+        }
+      }) 
+
     }
 
-  
-    // handle submit
-    fetch(`https://sea-lion-app-lccwh.ondigitalocean.app/jotform/submitmainform`,
-    {headers: {"Content-Type":"application/json"},method: "POST",body: JSON.stringify(formData)})
-    .then(response => response.json())
-    .then(data => {
-      if(data.success){
-        window.top.location.href = 'https://equiddy.com/thank-you/';
-      } else {
-        alert("Error, form not submitted")
-      }
-    })
+
  
   }); 
   
