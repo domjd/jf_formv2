@@ -85,7 +85,14 @@ function showResults(val) {
   return words.join(" ");
 }
 
+let calculateTotalDebt = () => {
+  let firstMortgage = Number(document.getElementsByName("firstmortgage").value.replace(/\,/g,''));
+  let secondMortgage = Number(document.getElementsByName("secondmortgage").value.replace(/\,/g,''));
+  let otherCharges = Number(document.getElementsByName("othercharges").value.replace(/\,/g,''));
 
+  const total = firstMortgage + secondMortgage + otherCharges;
+  return total;
+}
 
 
 window.onload = function() {
@@ -149,7 +156,7 @@ leadForm.addEventListener("submit", (e) => {
       "firstmortgage": document.getElementById("firstmortgage").value,
       "secondmortgage": document.getElementById("secondmortgage").value,
       "othercharges": document.getElementById("othercharges").value,
-      "totaldebt": document.getElementById("othercharges").value,
+      "totaldebt": calculateTotalDebt,
       "companyname": selectedCompany.title,
       "companyNumber": selectedCompany.company_number,
       "companyStatus": selectedCompany.company_status,
