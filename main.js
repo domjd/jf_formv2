@@ -135,6 +135,7 @@ leadForm.addEventListener("submit", (e) => {
     leadForm.style.display = "none";
     loader.style.display = "inline-block"
     const formData = {
+      "title": document.getElementById("title").value,
       "firstName": document.getElementById("fname").value,
       "lastName": document.getElementById("lname").value,
       "email": document.getElementById("email").value,
