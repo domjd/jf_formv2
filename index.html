@@ -15,6 +15,15 @@
         <div class="form-section">
             <h3>Step 1: About You</h3>
             <div class = "form-field">
+                <label for="title">Relationship To Company<span class="required">*</span></label>
+                <select id="title" name="title" required>
+                    <option value="" disabled selected hidden>Relationship To Company</option>
+                    <option value="Mr">Mr</option>
+                    <option value="Mrs">Mrs</option>
+                    <option value="Miss">Miss</option>
+                </select>
+            </div>
+            <div class = "form-field">
                 <label for="fname">First Name <span class="required">*</span></label>
                 <input type="text" id="fname" name="fname" placeholder="First Name" autocomplete="given-name" minlength="2" pattern="^[a-zA-Z]+$" title="Must be letters only with two characters minimum" required><br>
             </div>
