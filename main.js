@@ -105,10 +105,6 @@ window.onload = function() {
   resizeIframe();
 
 
-
-  document.getElementById("totaldebt").value = 45846;
-
-
   let loanPurpose = document.getElementsByName("purposeofloan")[0];
 
   loanPurpose.addEventListener("change",(e) => {
