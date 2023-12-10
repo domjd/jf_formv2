@@ -20,7 +20,7 @@ function showResults(val) {
       return;
     }
     let list = '';
-    fetch(`https://sea-lion-app-lccwh.ondigitalocean.app/companies/getCompaniesMain?companyname=${val}`, {method: 'GET', crossDomain: true}).then(
+    fetch(`http://https://sea-lion-app-lccwh.ondigitalocean.app/companies/getCompaniesMain?companyname=${val}`, {method: 'GET', crossDomain: true}).then(
      function (response) {
        return response.json();
      }).then(function (data) {
@@ -94,6 +94,20 @@ let calculateTotalDebt = () => {
   return total;
 }
 
+const capitalizeFirstLetter=  (input) =>{
+  const textInput = document.getElementById(input);
+  const inputValue = textInput.value.trim();
+
+  // Check if the input value is not empty
+  if (inputValue.length > 0) {
+      // Capitalize the first letter and concatenate the rest of the string
+      const capitalizedValue = inputValue.charAt(0).toUpperCase() + inputValue.slice(1);
+     
+  }
+
+  return capitalizedValue;
+}
+
 
 window.onload = function() {
   let leadForm = document.getElementById("leadform");
@@ -143,9 +157,9 @@ window.onload = function() {
       leadForm.style.display = "none";
       loader.style.display = "inline-block"
        const formData = {
-        "title": document.getElementById("title").value,
-        "firstName": document.getElementById("fname").value,
-        "lastName": document.getElementById("lname").value,
+        "title": document.getElementById("title"),
+        "firstName": capitalizeFirstLetter(document.getElementById("fname")),
+        "lastName": capitalizeFirstLetter(document.getElementById("lname")),
         "email": document.getElementById("email").value,
         "mobilenumber":document.getElementById("mobilenumber").value,
         "amountRequired": document.getElementById("amountrequired").value,
