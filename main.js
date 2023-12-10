@@ -10,7 +10,7 @@ function resizeIframe() {
 function showResults(val) {
     let res = document.getElementById("result");
 
-    if(document.getElementById('q').value === ''){
+    if(document.getElementById('companyname').value === ''){
      res.style.display = "none";
     }
 
@@ -20,7 +20,7 @@ function showResults(val) {
       return;
     }
     let list = '';
-    fetch(`http://https://sea-lion-app-lccwh.ondigitalocean.app/companies/getCompaniesMain?companyname=${val}`, {method: 'GET', crossDomain: true}).then(
+    fetch(`http://localhost:8080/companies/getCompaniesMain?companyname=${val}`, {method: 'GET', crossDomain: true}).then(
      function (response) {
        return response.json();
      }).then(function (data) {
@@ -68,7 +68,7 @@ function showResults(val) {
     }
 
 
-    document.getElementById("q").value = ""; 
+    document.getElementById("companyname").value = ""; 
     let res = document.getElementById("result");
     res.innerHTML = '';
     res.style.display = "none";
@@ -77,12 +77,12 @@ function showResults(val) {
 
   function formatTitle(sentence) {
 
-  const words = sentence.split(" ");
+    const words = sentence.split(" ");
 
-  for (let i = 0; i < words.length; i++) {
-      words[i] = words[i][0].toUpperCase() + words[i].substr(1).toLowerCase();
-  }
-  return words.join(" ");
+    for (let i = 0; i < words.length; i++) {
+        words[i] = words[i][0].toUpperCase() + words[i].substr(1).toLowerCase();
+    }
+    return words.join(" ");
 }
 
 let calculateTotalDebt = () => {
@@ -102,10 +102,23 @@ const capitalizeFirstLetter=  (input) =>{
   if (inputValue.length > 0) {
       // Capitalize the first letter and concatenate the rest of the string
       const capitalizedValue = inputValue.charAt(0).toUpperCase() + inputValue.slice(1);
+      return capitalizedValue;
      
   }
 
-  return capitalizedValue;
+  return inputValue;
+}
+
+  // Error handling function
+  function handleValidationErrors(errors) {
+    errors.forEach(error => {
+        const fieldError = document.getElementById(`${error.field}error`);
+        if (fieldError) {
+            fieldError.textContent = error.message;
+        }
+    });
+
+    updateSubmitButtonState();
 }
 
 
@@ -136,11 +149,73 @@ window.onload = function() {
     selector: '.number-separator',
     separator: ','
 })
+
+const submitForm = async () => {
+
+  const formData = {
+    "title": document.getElementById("title"),
+    "firstname": capitalizeFirstLetter("firstname"),
+    "lastname": capitalizeFirstLetter("lastname"),
+    "email": document.getElementById("email").value,
+    "mobilenumber":document.getElementById("mobilenumber").value,
+    "amountrequired": document.getElementById("amountrequired").value,
+    "termrequired": document.getElementById("termrequired").value,
+    "purposeofloan": document.getElementById("purposeofloan").value,
+    "descloan": document.getElementById("descloan").value,
+    "propertytype": document.getElementById("propertytype").value,
+    "propertyvalue": Number(document.getElementById("propertyvalue").value.replace(/\,/g,'')),
+    "firstmortgage": Number(document.getElementById("firstmortgage").value.replace(/\,/g,'')),
+    "secondmortgage": Number(document.getElementById("secondmortgage").value.replace(/\,/g,'')),
+    "othercharges": Number(document.getElementById("othercharges").value.replace(/\,/g,'')),
+    "totaldebt": calculateTotalDebt(),
+    "companyname": selectedCompany.title,
+    "companyNumber": selectedCompany.company_number,
+    "companyStatus": selectedCompany.company_status,
+    "companytype": document.getElementById("companytype").value,
+    "companyDescription": selectedCompany.description,
+    "companyurl": "https://find-and-update.company-information.service.gov.uk" + selectedCompany.links.self,
+    "addressone": document.getElementById("caddressOne").value,
+    "addresstwo": document.getElementById("caddressTwo").value,
+    "addressthree": document.getElementById("caddressThree").value,
+    "companypostcode": document.getElementById("cpostcode").value,
+    "relationshiptocompany": document.getElementById("relationshiptocompany").value,
+    "companypostcode": document.getElementById("cpostcode").value,
+    "confirmations": [document.getElementById('bankaccount').checked,document.getElementById('property').checked]
+  } 
+
+  try {
+      const response = await fetch('http://localhost:8080/jotform/submitmainform', {headers: {"Content-Type":"application/json"},
+      method: "POST",body: JSON.stringify(formData)});
+      console.log("SENDING REQUEST");
+
+      if (!response.ok) {
+          if (response.status === 400) {
+              const errorResponse = await response.json();
+              console.log(errorResponse);
+              handleValidationErrors(errorResponse.errors);
+              document.getElementById("error-header").scrollIntoView();
+          } else {
+              throw new Error(`Server responded with ${response.status}`);
+          }
+      } else {
+          const successMessage = await response.text();
+          alert(successMessage);
+      }
+  } catch (error) {
+      console.error('Error:', error.message);
+  }
+
+  return false; // Prevent the form from submitting in the traditional way
+
+}
+
  
   leadForm.addEventListener("submit", (e) => {
     e.preventDefault();
+    console.log("button pressed");
+    submitForm();
     
-    // Select the email input element by its name
+/*     // Select the email input element by its name
     var propertyValue = document.getElementsByName("propertyvalue")[0].value;
     // Call the validateEmail function and store the result
     propertyValue= propertyValue.replace(/\,/g,'')
@@ -189,7 +264,7 @@ window.onload = function() {
    
     
       // handle submit
-       fetch(`https://sea-lion-app-lccwh.ondigitalocean.app/jotform/submitmainform`,
+        fetch(`https://sea-lion-app-lccwh.ondigitalocean.app/jotform/submitmainform`,
       {headers: {"Content-Type":"application/json"},method: "POST",body: JSON.stringify(formData)})
       .then(response => response.json())
       .then(data => {
@@ -198,9 +273,14 @@ window.onload = function() {
         } else {
           alert("Error, form not submitted")
         }
-      }) 
+      })  
 
-    }
+    } */
+
+    // Form submission function
+
+
+
 
 
  

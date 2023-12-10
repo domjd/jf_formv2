@@ -6,12 +6,14 @@
     <title>Main Loan Form</title>
     <link rel="stylesheet" href="style.css">
     <script src="./main.js"></script>
+    <script src="./valid.js"></script>
     <script src="./currency.js"></script>
 </head>
 <body>
     <div id="container">
         <div class="lds-ring" id="loader"><div></div><div></div><div></div><div></div></div>
         <form action="" id="leadform" autocomplete="on">
+        <h2 class="error-header" id="error-header">Please Fix Your Errors</h2>
         <div class="form-section">
             <h3>Step 1: About You</h3>
             <div class = "form-field">
@@ -24,20 +26,24 @@
                 </select>
             </div>
             <div class = "form-field">
-                <label for="fname">First Name <span class="required">*</span></label>
-                <input type="text" id="fname" name="fname" placeholder="First Name" autocomplete="given-name" minlength="2" pattern="^[a-zA-Z]+$" title="Must be letters only with two characters minimum" required><br>
+                <label for="firstname">First Name <span class="required">*</span></label>
+                <input type="text" id="firstname" name="firstname" placeholder="First Name" autocomplete="given-name" minlength="2" onblur="validateField('firstname')" title="Must be letters only with two characters minimum" required>
+                <span class="error" id="firstnameerror"></span>
             </div>
             <div class = "form-field">
-                <label for="lname">Last Name <span class="required">*</span></label><br>
-                <input type="text" id="lname" name="lname" placeholder="Last Name" autocomplete="family-name"  minlength="2" pattern="^[a-zA-Z]+$" title="Must be letters only with two characters minimum" required><br>
+                <label for="lastname">Last Name <span class="required">*</span></label><br>
+                <input type="text" id="lastname" name="lastname" placeholder="Last Name" autocomplete="family-name"  minlength="2" onblur="validateField('lastname')" title="Must be letters only with two characters minimum" required><br>
+                <span class="error" id="lastnameerror"></span>
             </div>
             <div class = "form-field">
                 <label for="email">Email <span class="required">*</span></label><br>
-                <input type="email" placeholder="Email Address" id="email" name="email" required><br>
+                <input type="email" placeholder="Email Address" id="email" name="email" onblur="validateField('email')" required><br>
+                <span class="error" id="emailerror"></span>
             </div>
             <div class = "form-field">
                 <label for="mobilenumber">Mobile Number <span class="required">*</span></label>
-                <input type="tel" id="mobilenumber" placeholder="Mobile Number" name="mobilenumber" pattern="^\d{11}$" title="Mobile number must be 11 numbers" required>
+                <input type="tel" id="mobilenumber" placeholder="Mobile Number" name="mobilenumber" onblur="validateField('mobilenumber')" title="Mobile number must be 11 numbers" required>
+                <span class="error" id="mobilenumbererror">Mobile Number Must Be 11 numbers!</span>
                 <p class="sublabel">Must be 11 numbers</p>
             </div>
             <div class = "form-field">
@@ -49,6 +55,7 @@
                     <option value="Stakeholder">Stakeholder</option>
                     <option value="Other">Other</option>
                 </select>
+                <span class="error" id="relationshiptocompanyerror">dfgfdgfdg</span>
             </div>
             <div class = "form-field">
                 <label for="companytype">Company Type<span class="required">*</span></label>
@@ -57,6 +64,7 @@
                     <option value="Limited Company">Limited Company</option>
                     <option value="LLP">LLP</option>
                 </select>
+                <span class="error" id="companytypeerror"></span>
             </div>
         </div>
 
@@ -78,10 +86,11 @@
                     <option value="£150,000">£150,000</option>
                     <option value="£200,000+">£200,000+</option>
                 </select>
+                <span class="error" id="amountrequirederror"></span>
             </div>
             <div class = "form-field">
-                <label for="loanterm">Loan Term <span class="required">*</span></label>
-                <select id="loanterm" name="loanterm" required>
+                <label for="termrequired">Loan Term <span class="required">*</span></label>
+                <select id="termrequired" name="termrequired" required>
                     <option value="" disabled selected hidden>Loan Term</option>
                     <option value="1 Year">1 Year</option>
                     <option value="2 Years">2 Years</option>
@@ -99,6 +108,7 @@
                     <option value="14 Years">14 Years</option>
                     <option value="15 Years">15 Years</option>
                 </select>
+                <span class="error" id="termrequirederror"></span>
             </div>
             <div class = "form-field">
                 <label for="purposeofLoan">Purpose of Loan <span class="required">*</span></label>
@@ -114,19 +124,21 @@
                     <option value="Purchase Premises">Purchase Premises</option>
                     <option value="Other">Other</option>
                 </select>
+                <span class="error" id="purposeofloanerror"></span>
             </div>
 
             <div class = "form-field" id = "describeLoan">
-                <label id="describeloanpurposelabel" for="describeloanpurpose">Describe Purpose of Loan</label><br>
-                <textarea id="describeloanpurpose" name="describeloanpurpose" rows="4"></textarea>
+                <label id="describeloanpurposelabel" for="descloan">Describe Purpose of Loan</label><br>
+                <textarea id="descloan" name="descloan" rows="4"></textarea>
+                <span class="error" id="descloanerror"></span>
             </div>
         </div>
 
         <div class="form-section">
             <h3>Step 3: Your Property Security</h3>
             <div class = "form-field">
-                <label for="typeofproperty">Type of property being offered as loan security<span class="required">*</span></label>
-                <select id="typeofproperty" name="typeofproperty" required>
+                <label for="propertytype">Type of property being offered as loan security<span class="required">*</span></label>
+                <select id="propertytype" name="propertytype" required>
                     <option value="" disabled selected hidden>Property Type</option>
                     <option value="Owner Occupied Residential House">Owner Occupied Residential House</option>
                     <option value="Owner Occupied Residential Bungalow">Owner Occupied Residential Bungalow</option>
@@ -137,27 +149,32 @@
                     <option value="Investment Property Commercial  ">Investment Property Commercial </option>
                     <option value="Purchase Premises">Purchase Premises</option>
                 </select>
+                <span class="error" id="propertytypeerror"></span>
             </div>
 
             <div class = "form-field">
                 <label for="propertyvalue" id ="propertyvaluelabel">Property Value (£) <span class="required">*</span></label>
-                <input type="text" min="100000" inputmode="numeric" id="propertyvalue" class="number-separator" name ="propertyvalue" placeholder="Enter Property Value" >
+                <input type="text" inputmode="numeric" id="propertyvalue" onblur="validateField('propertyvalue')" class="number-separator" name ="propertyvalue" placeholder="Enter Property Value" >
+                <span class="error" id="propertyvalueerror"></span>
                 <p class = "sublabel" id="propertyvaluesublabel">Property value must be over £100,000</p>
             </div>
 
             <div class = "form-field">
                 <label for="firstmortgage">Amount of First Mortgage Owed on Security Property (£) <span class="required">*</span></label>
-                <input type="text" inputmode="numeric" id="firstmortgage" name ="firstmortgage" class="number-separator" placeholder="Enter First Mortgage">
+                <input type="text" inputmode="numeric" id="firstmortgage" name ="firstmortgage" onblur="validateField('firstmortgage')" class="number-separator" placeholder="Enter First Mortgage">
+                <span class="error" id="firstmortgageerror"></span>
                 <p class="sublabel">If none applies enter 0</p>
             </div>
             <div class = "form-field">
                 <label for="secondmortgage">Amount of Second Mortgage Owed on Security Property (£) <span class="required">*</span></label>
-                <input type="text" inputmode="numeric" id="secondmortgage" name ="secondmortgage" class="number-separator" placeholder="Enter Second Mortgage" >
+                <input type="text" inputmode="numeric" id="secondmortgage" name ="secondmortgage" onblur="validateField('secondmortgage')" class="number-separator" placeholder="Enter Second Mortgage" >
+                <span class="error" id="secondmortgageerror"></span>
                 <p class="sublabel">If none applies enter 0</p>
             </div>
             <div class = "form-field">
                 <label for="othercharges">Amount of Any Other Charges or Guarantees on Security Property (£) <span class="required">*</span></label>
-                <input type="text" inputmode="numeric" id="othercharges" name ="othercharges" class="number-separator" placeholder="Enter Any Other Charges" >
+                <input type="text" inputmode="numeric" id="othercharges" name ="othercharges" onblur="validateField('othercharges')" class="number-separator" placeholder="Enter Any Other Charges" >
+                <span class="error" id="otherchargeserror"></span>
                 <p class="sublabel">If none applies enter 0</p>
             </div>      
         </div>
@@ -168,9 +185,10 @@
             <h3>Step 4: Your Business</h3>
             <p class = "form-section-info">Search for your company in the field below and select from the dropdown box that appears</p>
             <div class = "form-field">
-                <label for="q">Company Lookup <span class="required">*</span></label><br>
-                <input type="text" name="q" id="q" onKeyUp="showResults(this.value)" placeholder="Search for company here to find company details"/><br>
+                <label for="clookup">Company Lookup <span class="required">*</span></label><br>
+                <input type="text" name="companyname" id="companyname" onKeyUp="showResults(this.value)" placeholder="Search for company here to find company details"/><br>
                 <div id="result"></div>
+                <span class="error" id="companynameerror"></span>
             </div>
             <div id = "companyDetails">
                 <div class = "form-field">
@@ -193,8 +211,10 @@
             <div class="grid-container">
                 <input type="checkbox" id="bankaccount" name="bankaccount" value="bankaccount" required>
                 <label for="bankaccount"> I confirm I have a business bank account <span class="required">*</span></label><br>
+                <span class="error" id="bankaccounterror"></span>
                 <input type="checkbox" id="property" name="property" value="property" required>
                 <label for="property"> I confirm I have property that could be used as loan security <span class="required">*</span></label>
+                <span class="error" id="bankaccounterror"></span>
             </div>
             <br><br>
             <button type="submit">Submit</button>
