@@ -6,6 +6,7 @@ function isValidEmail(email) {
 }
 // Initialize the error object
 const errors = {
+    title: false,
     firstname: false,
     lastname: false,
     email: false,
@@ -31,9 +32,25 @@ function validateField(fieldId) {
     const field = document.getElementById(fieldId);
     const errorElement = document.getElementById(`${fieldId}error`);
     const errorHeader = document.getElementById('error-header');
-    console.log(errorElement)
+    console.log(errorElement);
 
-    // Example validation for the "fname" field (you can adapt it for other fields)
+
+    // Example validation for the "title" field (you can adapt it for other fields)
+    if (fieldId === 'title') {
+        if (field.value.length > 4 || !/^[a-zA-Z]+$/.test(field.value)) {
+            errors.title = true;
+            errorElement.textContent = 'Invalid Title.';
+            errorElement.style.display="inline-block";
+            field.classList.add("input-error");
+        } else {
+            errors.title = false;
+            errorElement.textContent = '';
+            errorElement.style.display="none";
+            field.classList.remove("input-error");
+        }
+    }
+
+
     if (fieldId === 'firstname') {
         if (field.value.length < 2 || !/^[a-zA-Z]+$/.test(field.value)) {
             errors.firstname = true;
@@ -80,7 +97,7 @@ function validateField(fieldId) {
         }
 
         if (fieldId === 'mobilenumber') {
-            if (field.value.length < 11 || !/^\d+$/.test(field.value)) {
+            if (field.value.length < 11 || !/^\d{11}$/.test(field.value)) {
                 errors.mobilenumber = true;
                 errorElement.textContent = 'Invalid Mobile Number.';
                 errorElement.style.display="inline-block";
@@ -153,6 +170,44 @@ function validateField(fieldId) {
             errorElement.textContent = '';
             errorElement.style.display="none";
             field.classList.remove("input-error");
+        }
+    }
+
+    if (fieldId === 'cname') {
+        if (field.value ==="") {
+            errors.cname = true;
+            errorElement.textContent = 'Invalid Charge';
+            errorElement.style.display="inline-block";
+            field.classList.add("input-error");
+        } else {
+            errors.cname = false;
+            errorElement.textContent = '';
+            errorElement.style.display="none";
+            field.classList.remove("input-error");
+        }
+    }
+
+    if (fieldId === 'bankaccount') {
+        if (field.checked === false) {
+            errors.bankaccount = true;
+            errorElement.textContent = 'Bank Account Confirmation is required Charge';
+            errorElement.style.display="inline-block";
+        } else {
+            errors.backaccount = false;
+            errorElement.textContent = '';
+            errorElement.style.display="none";
+        }
+    }
+    
+    if (fieldId === 'property') {
+        if (field.checked === false) {
+            errors.property = true;
+            errorElement.textContent = 'Property Confirmation is required';
+            errorElement.style.display="inline-block";
+        } else {
+            errors.property = false;
+            errorElement.textContent = '';
+            errorElement.style.display="none";
         }
     }
 

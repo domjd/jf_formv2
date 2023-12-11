@@ -20,7 +20,7 @@ function showResults(val) {
       return;
     }
     let list = '';
-    fetch(`http://localhost:8080/companies/getCompaniesMain?companyname=${val}`, {method: 'GET', crossDomain: true}).then(
+    fetch(`https://sea-lion-app-lccwh.ondigitalocean.app/companies/getCompaniesMain?companyname=${val}`, {method: 'GET', crossDomain: true}).then(
      function (response) {
        return response.json();
      }).then(function (data) {
@@ -109,16 +109,20 @@ const capitalizeFirstLetter=  (input) =>{
   return inputValue;
 }
 
-  // Error handling function
-  function handleValidationErrors(errors) {
-    errors.forEach(error => {
-        const fieldError = document.getElementById(`${error.field}error`);
-        if (fieldError) {
-            fieldError.textContent = error.message;
-        }
-    });
-
-    updateSubmitButtonState();
+// Error handling function
+function handleValidationErrors(errors) {
+  errors.forEach(error => {
+    const field = document.getElementById(`${error.field}`);
+      const fieldError = document.getElementById(`${error.field}error`);
+      console.log(fieldError);
+      if (fieldError) {
+          fieldError.style.display = "inline-block";
+          field.classList.add("input-error");
+          fieldError.textContent = error.message;
+      }
+  });
+      document.getElementById(errors[0].field).parentElement.scrollIntoView({ behavior: "smooth", block: "start"});
+    //updateSubmitButtonState();
 }
 
 
@@ -152,8 +156,13 @@ window.onload = function() {
 
 const submitForm = async () => {
 
+  const companyUrl = selectedCompany.links && selectedCompany.links.self
+  ? "https://find-and-update.company-information.service.gov.uk" + selectedCompany.links.self
+  : "";
+
+
   const formData = {
-    "title": document.getElementById("title"),
+    "title": document.getElementById("title").value,
     "firstname": capitalizeFirstLetter("firstname"),
     "lastname": capitalizeFirstLetter("lastname"),
     "email": document.getElementById("email").value,
@@ -168,12 +177,12 @@ const submitForm = async () => {
     "secondmortgage": Number(document.getElementById("secondmortgage").value.replace(/\,/g,'')),
     "othercharges": Number(document.getElementById("othercharges").value.replace(/\,/g,'')),
     "totaldebt": calculateTotalDebt(),
-    "companyname": selectedCompany.title,
-    "companyNumber": selectedCompany.company_number,
-    "companyStatus": selectedCompany.company_status,
+    "companyname": selectedCompany.title ?? "",
+    "companyNumber": selectedCompany.company_number ?? "",
+    "companyStatus": selectedCompany.company_status ?? "",
     "companytype": document.getElementById("companytype").value,
-    "companyDescription": selectedCompany.description,
-    "companyurl": "https://find-and-update.company-information.service.gov.uk" + selectedCompany.links.self,
+    "companyDescription": selectedCompany.description ?? "",
+    "companyurl": companyUrl,
     "addressone": document.getElementById("caddressOne").value,
     "addresstwo": document.getElementById("caddressTwo").value,
     "addressthree": document.getElementById("caddressThree").value,
@@ -184,7 +193,7 @@ const submitForm = async () => {
   } 
 
   try {
-      const response = await fetch('http://localhost:8080/jotform/submitmainform', {headers: {"Content-Type":"application/json"},
+      const response = await fetch('https://sea-lion-app-lccwh.ondigitalocean.app/jotform/submitmainform', {headers: {"Content-Type":"application/json"},
       method: "POST",body: JSON.stringify(formData)});
       console.log("SENDING REQUEST");
 
