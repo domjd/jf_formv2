@@ -270,7 +270,7 @@ function validateField(fieldId) {
             errorElement.textContent = 'Bank Account Confirmation is required Charge';
             errorElement.style.display="inline-block";
         } else {
-            errors.backaccount = false;
+            errors.bankaccount = false;
             errorElement.textContent = '';
             errorElement.style.display="none";
         }

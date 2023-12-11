@@ -210,11 +210,11 @@
        
       
             <div class="grid-container">
-                <input type="checkbox" id="bankaccount" name="bankaccount" value="bankaccount" onblur="validateField('bankaccount')">
+                <input type="checkbox" id="bankaccount" name="bankaccount" value="bankaccount" onchange="validateField('bankaccount')">
                 <label for="bankaccount"> I confirm I have a business bank account <span class="required">*</span></label><br>
                 <span class="error" id="bankaccounterror"></span>
                 
-                <input type="checkbox" id="property" name="property" value="property" onblur="validateField('property')">
+                <input type="checkbox" id="property" name="property" value="property" onchange="validateField('property')">
                 <label for="property"> I confirm I have property that could be used as loan security <span class="required">*</span></label><br>
                 <span class="error" id="propertyerror"></span>
             </div>
