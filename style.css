@@ -125,6 +125,7 @@ form input[type=text], input[type=email],input[type=tel],select {
 .error-header{
   position:sticky;
   top:0px;
+  display:none;
   width: 100%;
   background-color: red;
   padding:1rem;
