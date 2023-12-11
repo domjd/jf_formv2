@@ -61,13 +61,13 @@ function validateField(fieldId) {
             errors.firstname = true;
             errorElement.textContent = 'Invalid first name.';
             errorElement.style.display="inline-block";
-            errorHeader.style.display = "inline-block";
+
             field.classList.add("input-error");
         } else {
             errors.firstname = false;
             errorElement.textContent = '';
             errorElement.style.display="none";
-            errorHeader.style.display = "none";
+
             field.classList.remove("input-error");
         }
     }
@@ -221,8 +221,17 @@ function validateField(fieldId) {
 
 
     // Enable/disable submit button based on errors
-    //const submitButton = document.querySelector('button[type="submit"]');
-    //submitButton.disabled = Object.values(errors).some(error => error);
+    const submitButton = document.querySelector('button[type="submit"]');
+    let hasErrors = Object.values(errors).some(error => error);
+    submitButton.disabled = hasErrors;
+    if(hasErrors){
+        submitButton.textContent = "Please Fix Your Errors";
+        errorHeader.style.display = "inline-block";
+        
+    } else {
+        submitButton.textContent = "Submit";
+        errorHeader.style.display = "none";
+    }
 }
 
 // Attach real-time validation to each input's "input" event
