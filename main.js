@@ -120,7 +120,8 @@ function handleValidationErrors(errors) {
           fieldError.textContent = error.message;
       }
   });
-      document.getElementById(errors[0].field).parentElement.scrollIntoView({ behavior: "smooth", block: "start"});
+      resizeIframe();
+      document.getElementById(errors[0].field).parentElement.parentElement.scrollIntoView({ behavior: "smooth", block: "start"});
     //updateSubmitButtonState();
 }
 
