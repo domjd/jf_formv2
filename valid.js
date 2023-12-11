@@ -19,7 +19,7 @@ const errors = {
     relationshiptocompany: false,
     companytype: false,
     amountrequired: false,
-    loanterm: false,
+    termrequired: false,
     purposeofloan: false,
     describeloanpurpose: false,
     typeofproperty: false,
@@ -38,6 +38,8 @@ function validateField(fieldId) {
     const errorElement = document.getElementById(`${fieldId}error`);
     const errorHeader = document.getElementById('error-header');
     console.log(errorElement);
+
+    console.log("field.value");
 
 
     // Example validation for the "title" field (you can adapt it for other fields)
@@ -87,33 +89,103 @@ function validateField(fieldId) {
     }
 
         // Example validation for the "fname" field (you can adapt it for other fields)
-        if (fieldId === 'email') {
-            if (!isValidEmail(field.value)) {
-                errors.email = true;
-                errorElement.textContent = 'Invalid Email.';
-                errorElement.style.display="inline-block";
-                field.classList.add("input-error");
-            } else {
-                errors.email = false;
-                errorElement.textContent = '';
-                errorElement.style.display="none";
-                field.classList.remove("input-error");
-            }
+    if (fieldId === 'email') {
+        if (!isValidEmail(field.value)) {
+            errors.email = true;
+            errorElement.textContent = 'Invalid Email.';
+            errorElement.style.display="inline-block";
+            field.classList.add("input-error");
+        } else {
+            errors.email = false;
+            errorElement.textContent = '';
+            errorElement.style.display="none";
+            field.classList.remove("input-error");
         }
+    }
 
-        if (fieldId === 'mobilenumber') {
-            if (field.value.length < 11 || !/^\d{11}$/.test(field.value)) {
-                errors.mobilenumber = true;
-                errorElement.textContent = 'Invalid Mobile Number.';
-                errorElement.style.display="inline-block";
-                field.classList.add("input-error");
-            } else {
-                errors.mobilenumber = false;
-                errorElement.textContent = '';
-                errorElement.style.display="none";
-                field.classList.remove("input-error");
-            }
+    if (fieldId === 'mobilenumber') {
+        if (field.value.length < 11 || !/^\d{11}$/.test(field.value)) {
+            errors.mobilenumber = true;
+            errorElement.textContent = 'Invalid Mobile Number.';
+            errorElement.style.display="inline-block";
+            field.classList.add("input-error");
+        } else {
+            errors.mobilenumber = false;
+            errorElement.textContent = '';
+            errorElement.style.display="none";
+            field.classList.remove("input-error");
         }
+    }
+
+    if (fieldId === 'relationshiptocompany') {
+        if (field.value == null || field.value === "") {
+            errors.relationshiptocompany = true;
+            errorElement.textContent = 'Invalid Mobile Number.';
+            errorElement.style.display="inline-block";
+            field.classList.add("input-error");
+        } else {
+            errors.relationshiptocompany = false;
+            errorElement.textContent = '';
+            errorElement.style.display="none";
+            field.classList.remove("input-error");
+        }
+    }
+
+    if (fieldId === 'companytype') {
+        if (field.value == null || field.value === "") {
+            errors.companytype = true;
+            errorElement.textContent = 'Invalid Company Type Number.';
+            errorElement.style.display="inline-block";
+            field.classList.add("input-error");
+        } else {
+            errors.companytype = false;
+            errorElement.textContent = '';
+            errorElement.style.display="none";
+            field.classList.remove("input-error");
+        }
+    }
+
+    if (fieldId === 'amountrequired') {
+        if (field.value == null || field.value === "") {
+            errors.amountrequired = true;
+            errorElement.textContent = 'Invalid Mobile Number.';
+            errorElement.style.display="inline-block";
+            field.classList.add("input-error");
+        } else {
+            errors.amountrequired = false;
+            errorElement.textContent = '';
+            errorElement.style.display="none";
+            field.classList.remove("input-error");
+        }
+    }
+
+    if (fieldId === 'termrequired') {
+        if (field.value == null || field.value === "") {
+            errors.termrequired = true;
+            errorElement.textContent = 'Invalid Mobile Number.';
+            errorElement.style.display="inline-block";
+            field.classList.add("input-error");
+        } else {
+            errors.termrequired = false;
+            errorElement.textContent = '';
+            errorElement.style.display="none";
+            field.classList.remove("input-error");
+        }
+    }
+
+    if (fieldId === 'purposeofloan') {
+        if (field.value == null || field.value === "") {
+            errors.purposeofloan = true;
+            errorElement.textContent = 'Invalid Mobile Number.';
+            errorElement.style.display="inline-block";
+            field.classList.add("input-error");
+        } else {
+            errors.purposeofloan = false;
+            errorElement.textContent = '';
+            errorElement.style.display="none";
+            field.classList.remove("input-error");
+        }
+    }
 
         
     if (fieldId === 'propertyvalue') {

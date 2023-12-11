@@ -18,7 +18,7 @@
             <h3>Step 1: About You</h3>
             <div class = "form-field">
                 <label for="title">Title<span class="required">*</span></label>
-                <select id="title" name="title">
+                <select id="title" name="title" onblur="validateField('title')">
                     <option value="" disabled selected hidden>Title</option>
                     <option value="Mr">Mr</option>
                     <option value="Mrs">Mrs</option>
@@ -49,7 +49,7 @@
             </div>
             <div class = "form-field">
                 <label for="relationshiptocompany">Relationship To Company<span class="required">*</span></label>
-                <select id="relationshiptocompany" name="relationshiptocompany">
+                <select id="relationshiptocompany" name="relationshiptocompany" onblur="validateField('relationshiptocompany')">
                     <option value="" disabled selected hidden>Relationship To Company</option>
                     <option value="Director">Director</option>
                     <option value="Shareholder">Shareholder</option>
@@ -60,7 +60,7 @@
             </div>
             <div class = "form-field">
                 <label for="companytype">Company Type<span class="required">*</span></label>
-                <select id="companytype" name="companytype">
+                <select id="companytype" name="companytype" onblur="validateField('companytype')">
                     <option value="" disabled selected hidden>Company Type</option>
                     <option value="Limited Company">Limited Company</option>
                     <option value="LLP">LLP</option>
@@ -73,7 +73,7 @@
             <h3>Step 2: Your Loan</h3>
             <div class = "form-field">
                 <label for="amountrequired">Amount Required <span class="required">*</span></label>
-                <select id="amountrequired" name="amountrequired">
+                <select id="amountrequired" name="amountrequired" onblur="validateField('amountrequired')">
                     <option value="" disabled selected hidden>Loan Amount</option>
                     <option value="£5,000">£5,000</option>
                     <option value="£10,000">£10,000</option>
@@ -91,7 +91,7 @@
             </div>
             <div class = "form-field">
                 <label for="termrequired">Loan Term <span class="required">*</span></label>
-                <select id="termrequired" name="termrequired">
+                <select id="termrequired" name="termrequired" onblur="validateField('termrequired')">
                     <option value="" disabled selected hidden>Loan Term</option>
                     <option value="1 Year">1 Year</option>
                     <option value="2 Years">2 Years</option>
@@ -113,7 +113,7 @@
             </div>
             <div class = "form-field">
                 <label for="purposeofLoan">Purpose of Loan <span class="required">*</span></label>
-                <select id="purposeofloan" name="purposeofloan">
+                <select id="purposeofloan" name="purposeofloan" onblur="validateField('purposeofloan')">
                     <option value="" disabled selected hidden>Purpose of Loan</option>
                     <option value="Repay Business Loan">Repay Business Loan</option>
                     <option value="Repay Business Debt">Repay Business Debt</option>
@@ -139,7 +139,7 @@
             <h3>Step 3: Your Property Security</h3>
             <div class = "form-field">
                 <label for="propertytype">Type of property being offered as loan security<span class="required">*</span></label>
-                <select id="propertytype" name="propertytype">
+                <select id="propertytype" name="propertytype" onblur="validateField('propertytype')">
                     <option value="" disabled selected hidden>Property Type</option>
                     <option value="Owner Occupied Residential House">Owner Occupied Residential House</option>
                     <option value="Owner Occupied Residential Bungalow">Owner Occupied Residential Bungalow</option>

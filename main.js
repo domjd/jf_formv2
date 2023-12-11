@@ -120,6 +120,11 @@ function handleValidationErrors(errors) {
           fieldError.textContent = error.message;
       }
   });
+      const errorHeader = document.getElementById('error-header');
+      const submitButton = document.querySelector('button[type="submit"]'); 
+      errorHeader.style.display = "inline-block";
+      submitButton.disabled = true;
+      submitButton.textContent = "Please Fix Your Errors"
       resizeIframe();
       document.getElementById(errors[0].field).parentElement.parentElement.scrollIntoView({ behavior: "smooth", block: "start"});
     //updateSubmitButtonState();
