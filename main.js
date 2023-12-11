@@ -4,7 +4,6 @@ let selectedCompany = [];
 function resizeIframe() {
   var bodyHeight = document.body.scrollHeight;
   window.parent.postMessage({ height: bodyHeight }, '*');
-  console.log("message sent");
 }
 
 function showResults(val) {

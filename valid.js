@@ -4,6 +4,11 @@ function isValidEmail(email) {
     var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return emailRegex.test(email);
 }
+
+function resizeIframe() {
+    var bodyHeight = document.body.scrollHeight;
+    window.parent.postMessage({ height: bodyHeight }, '*');
+  }
 // Initialize the error object
 const errors = {
     title: false,
@@ -212,12 +217,12 @@ function validateField(fieldId) {
     }
 
 
-        
+    resizeIframe();    
 
 
     // Enable/disable submit button based on errors
-    const submitButton = document.querySelector('button[type="submit"]');
-    submitButton.disabled = Object.values(errors).some(error => error);
+    //const submitButton = document.querySelector('button[type="submit"]');
+    //submitButton.disabled = Object.values(errors).some(error => error);
 }
 
 // Attach real-time validation to each input's "input" event
