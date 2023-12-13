@@ -129,7 +129,7 @@ function handleValidationErrors(errors) {
       const errorHeader = document.getElementById('error-header');
       const submitButton = document.querySelector('button[type="submit"]');
       console.log(errorsObject); 
-      errorHeader.style.display = "inline-block";
+      //errorHeader.style.display = "inline-block";
       submitButton.disabled = true;
       submitButton.textContent = "Please Fix Your Errors"
       resizeIframe();

@@ -220,7 +220,7 @@ function validateField(fieldId) {
     }
 
     if (fieldId === 'firstmortgage') {
-        if (field.value ==="" || /^[a-zA-Z]+$/.test(field.value)) {
+        if (/^[a-zA-Z]+$/.test(field.value)) {
             errorsObject.firstmortgage = true;
             errorElement.textContent = 'Invalid Mortgage';
             errorElement.style.display="inline-block";
@@ -234,7 +234,7 @@ function validateField(fieldId) {
     }
 
     if (fieldId === 'secondmortgage') {
-        if (field.value ==="" || /^[a-zA-Z]+$/.test(field.value)) {
+        if (/^[a-zA-Z]+$/.test(field.value)) {
             errorsObject.secondmortgage = true;
             errorElement.textContent = 'Invalid Mortgage';
             errorElement.style.display="inline-block";
@@ -249,7 +249,7 @@ function validateField(fieldId) {
 
 
     if (fieldId === 'othercharges') {
-        if (field.value ==="" || /^[a-zA-Z]+$/.test(field.value)) {
+        if (/^[a-zA-Z]+$/.test(field.value)) {
             errorsObject.othercharges = true;
             errorElement.textContent = 'Invalid Charge';
             errorElement.style.display="inline-block";
@@ -262,21 +262,20 @@ function validateField(fieldId) {
         }
     }
 
-/*     if (fieldId === 'companyname') {
-        const companyNameInput = document.getElementById("cname");
-        console.log(companyNameInput.value);
-        if (companyNameInput.value === "") {
-            errors.companyname = true;
+     if (fieldId === 'companyname') {
+        console.log("TEST")
+        if (field.value === "") {
+            errorsObject.companyname = true;
             errorElement.textContent = 'Invalid Company';
             errorElement.style.display="inline-block";
             field.classList.add("input-error");
         } else {
-            errors.companyname = false;
+            errorsObject.companyname = false;
             errorElement.textContent = '';
             errorElement.style.display="none";
             field.classList.remove("input-error");
         }
-    } */
+    } 
 
     if (fieldId === 'cname') {
         const companyLookUp = document.getElementById("companyname");
@@ -327,11 +326,11 @@ function validateField(fieldId) {
     submitButton.disabled = hasErrors;
     if(hasErrors){
         submitButton.textContent = "Please Fix Your Errors";
-        errorHeader.style.display = "inline-block";
+       // errorHeader.style.display = "inline-block";
         
     } else {
         submitButton.textContent = "Submit";
-        errorHeader.style.display = "none";
+        //errorHeader.style.display = "none";
     } 
     
     resizeIframe();   

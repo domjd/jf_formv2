@@ -184,10 +184,10 @@
 
         <div class="form-section">
             <h3>Step 4: Your Business</h3>
-            <p class = "form-section-info">Search for your company in the field below and select from the dropdown box that appears</p>
+            <p class = "form-section-info">Search for your Company in the field below and select from the dropdown box that appears</p>
             <div class = "form-field">
                 <label for="companyname">Company Lookup <span class="required">*</span></label><br>
-                <input type="text" name="companyname" id="companyname" onKeyUp="showResults(this.value)" placeholder="Search for company here to find company details"/><br>
+                <input type="text" name="companyname" id="companyname" onblur="validateField('companyname')" onKeyUp="showResults(this.value)" placeholder="Search for your Company details here"/><br>
                 <div id="result"></div>
                 <span class="error" id="companynameerror"></span>
             </div>

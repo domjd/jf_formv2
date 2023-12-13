@@ -108,6 +108,10 @@ form input[type=text], input[type=email],input[type=tel],select {
   
 }
 
+#companyname {
+  border: 2px solid orange;
+}
+
 #companyDetails {
   display: none;
 }
