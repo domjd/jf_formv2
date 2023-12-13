@@ -1,3 +1,5 @@
+
+
 // Function to check if an email is valid using a regular expression
 function isValidEmail(email) {
     // Regular expression for a simple email validation
@@ -10,7 +12,7 @@ function resizeIframe() {
     window.parent.postMessage({ height: bodyHeight }, '*');
   }
 // Initialize the error object
-const errors = {
+const errorsObject = {
     title: false,
     firstname: false,
     lastname: false,
@@ -22,12 +24,12 @@ const errors = {
     termrequired: false,
     purposeofloan: false,
     describeloanpurpose: false,
-    typeofproperty: false,
+    propertytype: false,
     propertyvalue: false,
     firstmortgage: false,
     secondmortgage: false,
     othercharges: false,
-    cname: false,
+    companyname: false,
     bankaccount: false,
     property: false,
 };
@@ -37,20 +39,16 @@ function validateField(fieldId) {
     const field = document.getElementById(fieldId);
     const errorElement = document.getElementById(`${fieldId}error`);
     const errorHeader = document.getElementById('error-header');
-    console.log(errorElement);
-
-    console.log("field.value");
-
 
     // Example validation for the "title" field (you can adapt it for other fields)
     if (fieldId === 'title') {
         if (field.value.length > 4 || !/^[a-zA-Z]+$/.test(field.value)) {
-            errors.title = true;
+            errorsObject.title = true;
             errorElement.textContent = 'Invalid Title.';
             errorElement.style.display="inline-block";
             field.classList.add("input-error");
         } else {
-            errors.title = false;
+            errorsObject.title = false;
             errorElement.textContent = '';
             errorElement.style.display="none";
             field.classList.remove("input-error");
@@ -60,13 +58,13 @@ function validateField(fieldId) {
 
     if (fieldId === 'firstname') {
         if (field.value.length < 2 || !/^[a-zA-Z]+$/.test(field.value)) {
-            errors.firstname = true;
+            errorsObject.firstname = true;
             errorElement.textContent = 'Invalid first name.';
             errorElement.style.display="inline-block";
 
             field.classList.add("input-error");
         } else {
-            errors.firstname = false;
+            errorsObject.firstname = false;
             errorElement.textContent = '';
             errorElement.style.display="none";
 
@@ -81,7 +79,7 @@ function validateField(fieldId) {
             errorElement.style.display="inline-block";
             field.classList.add("input-error");
         } else {
-            errors.lastname = false;
+            errorsObject.lastname = false;
             errorElement.textContent = '';
             errorElement.style.display="none";
             field.classList.remove("input-error");
@@ -91,12 +89,12 @@ function validateField(fieldId) {
         // Example validation for the "fname" field (you can adapt it for other fields)
     if (fieldId === 'email') {
         if (!isValidEmail(field.value)) {
-            errors.email = true;
+            errorsObject.email = true;
             errorElement.textContent = 'Invalid Email.';
             errorElement.style.display="inline-block";
             field.classList.add("input-error");
         } else {
-            errors.email = false;
+            errorsObject.email = false;
             errorElement.textContent = '';
             errorElement.style.display="none";
             field.classList.remove("input-error");
@@ -105,12 +103,12 @@ function validateField(fieldId) {
 
     if (fieldId === 'mobilenumber') {
         if (field.value.length < 11 || !/^\d{11}$/.test(field.value)) {
-            errors.mobilenumber = true;
+            errorsObject.mobilenumber = true;
             errorElement.textContent = 'Invalid Mobile Number.';
             errorElement.style.display="inline-block";
             field.classList.add("input-error");
         } else {
-            errors.mobilenumber = false;
+            errorsObject.mobilenumber = false;
             errorElement.textContent = '';
             errorElement.style.display="none";
             field.classList.remove("input-error");
@@ -119,12 +117,12 @@ function validateField(fieldId) {
 
     if (fieldId === 'relationshiptocompany') {
         if (field.value == null || field.value === "") {
-            errors.relationshiptocompany = true;
+            errorsObject.relationshiptocompany = true;
             errorElement.textContent = 'Invalid Mobile Number.';
             errorElement.style.display="inline-block";
             field.classList.add("input-error");
         } else {
-            errors.relationshiptocompany = false;
+            errorsObject.relationshiptocompany = false;
             errorElement.textContent = '';
             errorElement.style.display="none";
             field.classList.remove("input-error");
@@ -133,12 +131,12 @@ function validateField(fieldId) {
 
     if (fieldId === 'companytype') {
         if (field.value == null || field.value === "") {
-            errors.companytype = true;
+            errorsObject.companytype = true;
             errorElement.textContent = 'Invalid Company Type Number.';
             errorElement.style.display="inline-block";
             field.classList.add("input-error");
         } else {
-            errors.companytype = false;
+            errorsObject.companytype = false;
             errorElement.textContent = '';
             errorElement.style.display="none";
             field.classList.remove("input-error");
@@ -147,12 +145,12 @@ function validateField(fieldId) {
 
     if (fieldId === 'amountrequired') {
         if (field.value == null || field.value === "") {
-            errors.amountrequired = true;
+            errorsObject.amountrequired = true;
             errorElement.textContent = 'Invalid Mobile Number.';
             errorElement.style.display="inline-block";
             field.classList.add("input-error");
         } else {
-            errors.amountrequired = false;
+            errorsObject.amountrequired = false;
             errorElement.textContent = '';
             errorElement.style.display="none";
             field.classList.remove("input-error");
@@ -161,12 +159,12 @@ function validateField(fieldId) {
 
     if (fieldId === 'termrequired') {
         if (field.value == null || field.value === "") {
-            errors.termrequired = true;
+            errorsObject.termrequired = true;
             errorElement.textContent = 'Invalid Mobile Number.';
             errorElement.style.display="inline-block";
             field.classList.add("input-error");
         } else {
-            errors.termrequired = false;
+            errorsObject.termrequired = false;
             errorElement.textContent = '';
             errorElement.style.display="none";
             field.classList.remove("input-error");
@@ -175,12 +173,26 @@ function validateField(fieldId) {
 
     if (fieldId === 'purposeofloan') {
         if (field.value == null || field.value === "") {
-            errors.purposeofloan = true;
+            errorsObject.purposeofloan = true;
             errorElement.textContent = 'Invalid Mobile Number.';
             errorElement.style.display="inline-block";
             field.classList.add("input-error");
         } else {
-            errors.purposeofloan = false;
+            errorsObject.purposeofloan = false;
+            errorElement.textContent = '';
+            errorElement.style.display="none";
+            field.classList.remove("input-error");
+        }
+    }
+
+    if (fieldId === 'propertytype') {
+        if (field.value == null || field.value === "") {
+            errorsObject.propertytype = true;
+            errorElement.textContent = 'Invalid Property Type.';
+            errorElement.style.display="inline-block";
+            field.classList.add("input-error");
+        } else {
+            errorsObject.propertytype = false;
             errorElement.textContent = '';
             errorElement.style.display="none";
             field.classList.remove("input-error");
@@ -195,12 +207,12 @@ function validateField(fieldId) {
         propertyValue=Number(propertyValue);
 
         if (propertyValue < 100000 || /^[a-zA-Z]+$/.test(field.value)) {
-            errors.propertyvalue = true;
+            errorsObject.propertyvalue = true;
             errorElement.textContent = 'Property Value Must Be Over £100,000.';
             errorElement.style.display="inline-block";
             field.classList.add("input-error");
         } else {
-            errors.propertyvalue = false;
+            errorsObject.propertyvalue = false;
             errorElement.textContent = '';
             errorElement.style.display="none";
             field.classList.remove("input-error");
@@ -209,12 +221,12 @@ function validateField(fieldId) {
 
     if (fieldId === 'firstmortgage') {
         if (field.value ==="" || /^[a-zA-Z]+$/.test(field.value)) {
-            errors.firstmortgage = true;
+            errorsObject.firstmortgage = true;
             errorElement.textContent = 'Invalid Mortgage';
             errorElement.style.display="inline-block";
             field.classList.add("input-error");
         } else {
-            errors.firstmortgage = false;
+            errorsObject.firstmortgage = false;
             errorElement.textContent = '';
             errorElement.style.display="none";
             field.classList.remove("input-error");
@@ -223,12 +235,12 @@ function validateField(fieldId) {
 
     if (fieldId === 'secondmortgage') {
         if (field.value ==="" || /^[a-zA-Z]+$/.test(field.value)) {
-            errors.secondmortgage = true;
+            errorsObject.secondmortgage = true;
             errorElement.textContent = 'Invalid Mortgage';
             errorElement.style.display="inline-block";
             field.classList.add("input-error");
         } else {
-            errors.secondmortgage = false;
+            errorsObject.secondmortgage = false;
             errorElement.textContent = '';
             errorElement.style.display="none";
             field.classList.remove("input-error");
@@ -238,39 +250,58 @@ function validateField(fieldId) {
 
     if (fieldId === 'othercharges') {
         if (field.value ==="" || /^[a-zA-Z]+$/.test(field.value)) {
-            errors.othercharges = true;
+            errorsObject.othercharges = true;
             errorElement.textContent = 'Invalid Charge';
             errorElement.style.display="inline-block";
             field.classList.add("input-error");
         } else {
-            errors.othercharges = false;
+            errorsObject.othercharges = false;
             errorElement.textContent = '';
             errorElement.style.display="none";
             field.classList.remove("input-error");
         }
     }
 
-    if (fieldId === 'cname') {
-        if (field.value ==="") {
-            errors.cname = true;
-            errorElement.textContent = 'Invalid Charge';
+/*     if (fieldId === 'companyname') {
+        const companyNameInput = document.getElementById("cname");
+        console.log(companyNameInput.value);
+        if (companyNameInput.value === "") {
+            errors.companyname = true;
+            errorElement.textContent = 'Invalid Company';
             errorElement.style.display="inline-block";
             field.classList.add("input-error");
         } else {
-            errors.cname = false;
+            errors.companyname = false;
             errorElement.textContent = '';
             errorElement.style.display="none";
             field.classList.remove("input-error");
+        }
+    } */
+
+    if (fieldId === 'cname') {
+        const companyLookUp = document.getElementById("companyname");
+        const companyLookUpError = document.getElementById("companynameerror");
+        console.log("TEST");
+        if (field.value === "") {
+            errorsObject.companyname = true;
+            companyLookUpError.textContent = 'Invalid Company';
+            companyLookUpError.style.display="inline-block";
+            companyLookUp.classList.add("input-error");
+        } else {
+            errorsObject.companyname = false;
+            companyLookUpError.textContent = '';
+            companyLookUpError.style.display="none";
+            companyLookUp.classList.remove("input-error");
         }
     }
 
     if (fieldId === 'bankaccount') {
         if (field.checked === false) {
-            errors.bankaccount = true;
+            errorsObject.bankaccount = true;
             errorElement.textContent = 'Bank Account Confirmation is required Charge';
             errorElement.style.display="inline-block";
         } else {
-            errors.bankaccount = false;
+            errorsObject.bankaccount = false;
             errorElement.textContent = '';
             errorElement.style.display="none";
         }
@@ -278,11 +309,11 @@ function validateField(fieldId) {
     
     if (fieldId === 'property') {
         if (field.checked === false) {
-            errors.property = true;
+            errorsObject.property = true;
             errorElement.textContent = 'Property Confirmation is required';
             errorElement.style.display="inline-block";
         } else {
-            errors.property = false;
+            errorsObject.property = false;
             errorElement.textContent = '';
             errorElement.style.display="none";
         }
@@ -294,7 +325,8 @@ function validateField(fieldId) {
 
     // Enable/disable submit button based on errors
     const submitButton = document.querySelector('button[type="submit"]');
-    let hasErrors = Object.values(errors).some(error => error);
+    console.log(errorsObject);
+    let hasErrors = Object.values(errorsObject).some(error => error);
     submitButton.disabled = hasErrors;
     if(hasErrors){
         submitButton.textContent = "Please Fix Your Errors";
@@ -303,7 +335,7 @@ function validateField(fieldId) {
     } else {
         submitButton.textContent = "Submit";
         errorHeader.style.display = "none";
-    }
+    }   
 }
 
 // Attach real-time validation to each input's "input" event

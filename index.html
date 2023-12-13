@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Main Loan Form</title>
     <link rel="stylesheet" href="style.css">
-    <script src="./main.js"></script>
-    <script src="./valid.js"></script>
+    <script type="text/javascript" src="./valid.js"></script>
+    <script type="text/javascript" src="./main.js"></script>
     <script src="./currency.js"></script>
 </head>
 <body>
@@ -18,7 +18,7 @@
             <h3>Step 1: About You</h3>
             <div class = "form-field">
                 <label for="title">Title<span class="required">*</span></label>
-                <select id="title" name="title" onblur="validateField('title')">
+                <select id="title" name="title" onchange="validateField('title')">
                     <option value="" disabled selected hidden>Title</option>
                     <option value="Mr">Mr</option>
                     <option value="Mrs">Mrs</option>
@@ -49,7 +49,7 @@
             </div>
             <div class = "form-field">
                 <label for="relationshiptocompany">Relationship To Company<span class="required">*</span></label>
-                <select id="relationshiptocompany" name="relationshiptocompany" onblur="validateField('relationshiptocompany')">
+                <select id="relationshiptocompany" name="relationshiptocompany" onchange="validateField('relationshiptocompany')">
                     <option value="" disabled selected hidden>Relationship To Company</option>
                     <option value="Director">Director</option>
                     <option value="Shareholder">Shareholder</option>
@@ -60,7 +60,7 @@
             </div>
             <div class = "form-field">
                 <label for="companytype">Company Type<span class="required">*</span></label>
-                <select id="companytype" name="companytype" onblur="validateField('companytype')">
+                <select id="companytype" name="companytype" onchange="validateField('companytype')">
                     <option value="" disabled selected hidden>Company Type</option>
                     <option value="Limited Company">Limited Company</option>
                     <option value="LLP">LLP</option>
@@ -73,7 +73,7 @@
             <h3>Step 2: Your Loan</h3>
             <div class = "form-field">
                 <label for="amountrequired">Amount Required <span class="required">*</span></label>
-                <select id="amountrequired" name="amountrequired" onblur="validateField('amountrequired')">
+                <select id="amountrequired" name="amountrequired" onchange="validateField('amountrequired')">
                     <option value="" disabled selected hidden>Loan Amount</option>
                     <option value="£5,000">£5,000</option>
                     <option value="£10,000">£10,000</option>
@@ -91,7 +91,7 @@
             </div>
             <div class = "form-field">
                 <label for="termrequired">Loan Term <span class="required">*</span></label>
-                <select id="termrequired" name="termrequired" onblur="validateField('termrequired')">
+                <select id="termrequired" name="termrequired" onchange="validateField('termrequired')">
                     <option value="" disabled selected hidden>Loan Term</option>
                     <option value="1 Year">1 Year</option>
                     <option value="2 Years">2 Years</option>
@@ -113,7 +113,7 @@
             </div>
             <div class = "form-field">
                 <label for="purposeofLoan">Purpose of Loan <span class="required">*</span></label>
-                <select id="purposeofloan" name="purposeofloan" onblur="validateField('purposeofloan')">
+                <select id="purposeofloan" name="purposeofloan" onchange="validateField('purposeofloan')">
                     <option value="" disabled selected hidden>Purpose of Loan</option>
                     <option value="Repay Business Loan">Repay Business Loan</option>
                     <option value="Repay Business Debt">Repay Business Debt</option>
@@ -139,7 +139,7 @@
             <h3>Step 3: Your Property Security</h3>
             <div class = "form-field">
                 <label for="propertytype">Type of property being offered as loan security<span class="required">*</span></label>
-                <select id="propertytype" name="propertytype" onblur="validateField('propertytype')">
+                <select id="propertytype" name="propertytype" onchange="validateField('propertytype')">
                     <option value="" disabled selected hidden>Property Type</option>
                     <option value="Owner Occupied Residential House">Owner Occupied Residential House</option>
                     <option value="Owner Occupied Residential Bungalow">Owner Occupied Residential Bungalow</option>
@@ -186,7 +186,7 @@
             <h3>Step 4: Your Business</h3>
             <p class = "form-section-info">Search for your company in the field below and select from the dropdown box that appears</p>
             <div class = "form-field">
-                <label for="clookup">Company Lookup <span class="required">*</span></label><br>
+                <label for="companyname">Company Lookup <span class="required">*</span></label><br>
                 <input type="text" name="companyname" id="companyname" onKeyUp="showResults(this.value)" placeholder="Search for company here to find company details"/><br>
                 <div id="result"></div>
                 <span class="error" id="companynameerror"></span>

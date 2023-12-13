@@ -71,6 +71,7 @@ function showResults(val) {
     let res = document.getElementById("result");
     res.innerHTML = '';
     res.style.display = "none";
+    validateField('cname');
     resizeIframe();
   }
 
@@ -110,7 +111,12 @@ const capitalizeFirstLetter=  (input) =>{
 
 // Error handling function
 function handleValidationErrors(errors) {
-  errors.forEach(error => {
+  console.log(errors);
+  const errorNames = Object.keys(errorsObject)
+  errors.forEach((error, index) => {
+    if(errorNames.includes(error.field)){
+      errorsObject[error.field] = true;
+    }
     const field = document.getElementById(`${error.field}`);
       const fieldError = document.getElementById(`${error.field}error`);
       console.log(fieldError);
@@ -121,7 +127,8 @@ function handleValidationErrors(errors) {
       }
   });
       const errorHeader = document.getElementById('error-header');
-      const submitButton = document.querySelector('button[type="submit"]'); 
+      const submitButton = document.querySelector('button[type="submit"]');
+      console.log(errorsObject); 
       errorHeader.style.display = "inline-block";
       submitButton.disabled = true;
       submitButton.textContent = "Please Fix Your Errors"
@@ -139,6 +146,21 @@ window.onload = function() {
 
   descLoan.style.display = "none";
   resizeIframe();
+
+  
+/*     // Get the URL parameters
+    const urlParams = new URLSearchParams(window.location.search);
+  
+    // Get the value of the 'firstname' parameter
+    const firstname = urlParams.get('firstname');
+  
+    // Set the value of the form field
+    if (firstname) {
+      const firstnameField = document.getElementById('firstname');
+      firstnameField.value = firstname;
+    } */
+
+  
 
 
   let loanPurpose = document.getElementsByName("purposeofloan")[0];
@@ -200,12 +222,10 @@ const submitForm = async () => {
   try {
       const response = await fetch('https://sea-lion-app-lccwh.ondigitalocean.app/jotform/submitmainform', {headers: {"Content-Type":"application/json"},
       method: "POST",body: JSON.stringify(formData)});
-      console.log("SENDING REQUEST");
 
       if (!response.ok) {
           if (response.status === 400) {
               const errorResponse = await response.json();
-              console.log(errorResponse);
               handleValidationErrors(errorResponse.errors);
               document.getElementById("error-header").scrollIntoView();
           } else {
