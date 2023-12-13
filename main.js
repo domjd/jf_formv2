@@ -233,7 +233,8 @@ const submitForm = async () => {
           }
       } else {
           const successMessage = await response.text();
-          alert(successMessage);
+          window.top.location.href = 'https://equiddy.com/thank-you/';
+          //alert(successMessage);
       }
   } catch (error) {
       console.error('Error:', error.message);
