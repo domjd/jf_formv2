@@ -227,7 +227,7 @@ const submitForm = async () => {
           if (response.status === 400) {
               const errorResponse = await response.json();
               handleValidationErrors(errorResponse.errors);
-              document.getElementById("error-header").scrollIntoView();
+              //document.getElementById("error-header").scrollIntoView();
           } else {
               throw new Error(`Server responded with ${response.status}`);
           }
