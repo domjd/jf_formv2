@@ -317,10 +317,7 @@ function validateField(fieldId) {
             errorElement.textContent = '';
             errorElement.style.display="none";
         }
-    }
-
-
-    resizeIframe();    
+    } 
 
 
     // Enable/disable submit button based on errors
@@ -335,7 +332,9 @@ function validateField(fieldId) {
     } else {
         submitButton.textContent = "Submit";
         errorHeader.style.display = "none";
-    }   
+    } 
+    
+    resizeIframe();   
 }
 
 // Attach real-time validation to each input's "input" event
