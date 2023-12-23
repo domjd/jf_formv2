@@ -74,7 +74,7 @@ function validateField(fieldId) {
 
     if (fieldId === 'lastname') {
         if (field.value.length < 2 || !/^[a-zA-Z]+$/.test(field.value)) {
-            errors.lastname = true;
+            errorsObject.lastname = true;
             errorElement.textContent = 'Invalid Last name.';
             errorElement.style.display="inline-block";
             field.classList.add("input-error");
